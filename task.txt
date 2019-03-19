@@ -1,0 +1,86 @@
+
+Backend:
+1- Models:
+   FlowerShop:
+      name,
+      image (banner)
+      location
+      totalFlowersCount => read only and incremented auto after adding a new flower under this shop
+      creationDate
+
+   Flower
+     name
+     description
+     shop => ref
+     creationDate
+     price
+     image
+     sponsored => boolean , We will set this in some flowers to true to view some of them in the sponsored section
+
+   /*User:
+     name
+     email
+     image
+     creationDate
+     password (edited)
+    */
+
+
+ /* Order . => We will use this model as a history of all previous checkouts of the shopping cart
+     user
+     flowers
+     totalPrice
+     creationDate
+All attributes are required for simplicity
+*/
+
+
+/*
+Cart
+  user => ref owner of the cart
+  flowers =>  Array of refs
+  totalPrice => read only sum of all flowers prices !!!
+*/
+
+
+/*FavouriteAssignment
+     flower => ref
+     user => ref
+*/
+
+2- Routes
+   /login /signup to add new user (Don't forget email verification and duplicate checks)
+
+
+   
+/shops => @get paginated, @post to add new shop
+/shops/near => @get paginated find nearest shops to my location
+   will take query parameters  lat=number , lng = number
+/shops/{id} => @get to fetch shop details , @put to update shop details
+
+
+
+
+/flowers => @get paginated request to get all flowers under all shops
+   add query parameter sponsored = true/false to filter flowers by sponsorship
+/flowers/{id} => @get to fetch flower details , @put to update (edited)
+
+
+
+-------------------------------------------------------------------------------------------------------------------
+/shops/{id}/flowers => @get paginated request to get flowers under this shop , @post to add new flower under this shop
+
+-------------------------------------------------------------------------
+/users/{id}/cart => @get to fetch my current cart details
+/users/{id}/cart => @post to add a new flower to the cart and of course the total price updated auto
+
+
+
+
+/orders => @get paginated order history
+/checkout => A dummy request to empty the cart (??? ???? ??????) and saves an order model with the state of the cart during this checkout
+
+
+
+in app notifications using nodejs and mongoDB // and push notifications using nodejs and firebase
+deepstream => chat
