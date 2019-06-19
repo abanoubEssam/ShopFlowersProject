@@ -5,7 +5,7 @@ import { sendNotifi } from '../services/notification.service'
 import { FlowerModel } from '../models/flower.models'
 import { ShopModel } from '../models/shop.models'
 import { UserModel } from '../models/user.models'
-import dsClient from '../services/deepstreem.client.service'
+// import dsClient from '../services/deepstreem.client.service'
 export default {
 
     async makeOrder(req, res, next) {

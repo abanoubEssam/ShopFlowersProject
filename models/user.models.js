@@ -1,7 +1,9 @@
 
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
+const config = require('config');
 
-const UserModel = mongoose.model('User', new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -27,19 +29,26 @@ const UserModel = mongoose.model('User', new mongoose.Schema({
   userImage: {
     type: String
   }
-}, {
-    toJSON: {
-      // to delete some of model object 
-      transform: function (doc, ret) {
-        ret.id = ret._id;
-        delete ret.__v;
-        delete ret._id;
-        delete ret.password;
-      }
+},
+{
+  toJSON: {
+    // to delete some of model object 
+    transform: function (doc, ret) {
+      ret.id = ret._id;
+      delete ret.__v;
+      delete ret._id;
+      delete ret.password;
     }
   }
-));
+})
 
+
+userSchema.methods.generateAuthToken = function () {
+  const token = jwt.sign({ _id: this._id  , email: this.email}, config.get('jwtPrivateKey'));
+  return token;
+}
+
+const UserModel = mongoose.model('User', userSchema);
 
 export const validateUserOnUpdateSchema = {
   type: "object",

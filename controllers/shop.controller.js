@@ -27,11 +27,11 @@ export default {
                 .limit(pageSize)
                 .select('name shopImage');
 
-            console.log(shops.length);
+            // console.log(shops.length);
             const countShop = await ShopModel.count();
-            console.log('all shops : ', countShop);
+            // console.log('all shops : ', countShop);
             let remainingShops = Math.ceil(countShop - pageSize);
-            console.log('remaining pages : ', Math.ceil(remainingShops / pageSize))
+            // console.log('remaining pages : ', Math.ceil(remainingShops / pageSize))
             let pageCount = Math.ceil(countShop / pageSize)
             res.send({data: shops, pageNumber , pageSize , totalCount : countShop , pageCount });
         } catch (error) {

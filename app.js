@@ -1,7 +1,9 @@
-import path from 'path';
+import  path from 'path';
 import passport from 'passport';
 const swaggerDocs = require('./services/swaggerDocs.service');
 const mongoose = require('mongoose');
+
+import  config  from 'config'
 
 const shops = require('./routes/shop.routes');
 const User = require('./routes/user.routes');
@@ -20,11 +22,13 @@ const app = express();
 
 swaggerDocs(app);
 
-mongoose.connect('mongodb://localhost/ShopsFlowers', {
+const db = config.get('db');
+
+mongoose.connect( db , {
   useNewUrlParser: true
 })
-  .then(() => console.log('Connected to MongoDB...'))
-  .catch(err => console.error('Could not connect to MongoDB...'));
+  .then(() => console.log(`Connected to ${db}...`))
+  .catch(err => console.error(`Could not connect to ${db}...`));
 
 app.use(express.json());
 app.use(passport.initialize());
@@ -46,4 +50,10 @@ app.use((err, req, res, next) => {
   res.status(err.status || 400).send(err.message);
 });
 
-app.listen(3000);
+// module.exports = app;
+
+const port = process.env.PORT || 3000;
+
+const server  = app.listen(port , () => console.log(`listen to ${port}`) );
+
+module.exports = server;

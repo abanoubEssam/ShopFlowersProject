@@ -24,8 +24,6 @@ passport.use(new LocalStrategy({
         }
         const validPassword = await bcrypt.compare(password, user.password);
         if (!validPassword) return done(new Error('invalid email or password'));
-
-
         return done(null, user);
 
     }
