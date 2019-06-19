@@ -8,7 +8,7 @@ const router = express.Router();
 import flowerRoute from './flower.routes';
 
 // why use it ?
-router.use(flowerRoute);
+router.use('/flowers' ,  flowerRoute);
 
 // /shops
 // shops/page?pageNumber=2&pageSize=2
