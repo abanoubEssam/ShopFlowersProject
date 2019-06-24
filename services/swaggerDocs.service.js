@@ -48,7 +48,7 @@ SignUpSwaggerSchema.properties = {
 // create shop schema
 const CreateShopSwaggerSchema = clone(CreateShopSchema);
 // to add more required fields in this schema 
-CreateShopSwaggerSchema.required.push(['']);
+// CreateShopSwaggerSchema.required.push(['']);
 CreateShopSwaggerSchema.properties = {
     ...CreateShopSwaggerSchema.properties ,
     
@@ -820,7 +820,7 @@ const options = {
                     },
                 }
             },
-            '/flowers/':{
+            '/flowers':{
                 get:{
                     tags: ['Flowers'],
                     summary: ['Get All Flowers'],

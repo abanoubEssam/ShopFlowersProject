@@ -5,17 +5,19 @@ import { validate } from '../services/validator.service';
 
 export default {
     async findAllFowers(req , res , next){
+     
         // const flowers = await FlowerModel.find().populate('shop');
         const flowers = await FlowerModel.find().sort({sponsored : -1 });
-        console.log(flowers);
         res.send(flowers);
     },
     async findFlowers( req , res , next){
         try {
+            console.log(' el findFlowers func work ====== ');
+
             let pageNumber = req.query.pageNumber;
             let pageSize = req.query.pageSize;
 
-            const flowers = await FlowerModel.find()
+            const flowers = await FlowerModel.find().sort({sponsored: -1})
             .skip((pageNumber - 1 ) * pageSize )
             .limit(Number(pageSize));
             res.send(flowers);
@@ -25,10 +27,11 @@ export default {
         }
     },
     async insertFlower(req, res , next) {
+       
         let { shopId } = req.params;
         try {
             if (!mongoose.Types.ObjectId.isValid(req.params.shopId)) {
-                return res.status(400).send('please enter a valid  id '); // They didn't send an object ID
+                return res.status(400).send('to  insert flower please enter a valid  id '); // They didn't send an object ID
             }
             const shop = await ShopModel.findById(shopId);
             if (!shop) return res.status(400).send('shop not found');
@@ -51,8 +54,7 @@ export default {
                 flowerImage: 'http://localhost:3000/uploads/' + req.file.originalname,
                 shop: shopId
             });
-            //console.log(flower , ' flower console');
-            res.send(flower);
+            res.status(201).send(flower);
             if(shop) {
                 shop.totalFlowersCount += 1;
             }
@@ -63,16 +65,15 @@ export default {
         }
     },
     async findFlowersByShopId(req , res , next){
+      
         let { shopId } = req.params;
         try {
             if (!mongoose.Types.ObjectId.isValid(req.params.shopId)) {
-                return res.status(400).send('please enter a valid  id '); // They didn't send an object ID
+                return res.status(400).send('to get flowers by shop id please enter a valid  id '); // They didn't send an object ID
             }
             const shop = await ShopModel.findById(shopId);
             if (!shop) return res.status(400).send('shop not found');
-            console.log(shopId);
             const flowers = await FlowerModel.find({shop : shopId});
-            console.log(flowers);
          
             res.send(flowers);
 
@@ -94,14 +95,10 @@ export default {
 
             const shop = await ShopModel.findById(shopId);
             if (!shop) return res.status(400).send('shop not found');
-            console.log(shopId);
 
             const flower = await FlowerModel.findById(flowerId);
             if(!flower) return res.status(400).send('flower not found'); 
-            // console.log(flowerId);
-            // console.log(flower);
-            // console.log(flower.shop);
-            // console.log(shopId);
+
             if(String(flower.shop) !== String(shopId)) return res.status(403).send('you are not allowed to access this flower');
 
             res.send(flower);
@@ -124,11 +121,9 @@ export default {
 
             const shop = await ShopModel.findById(shopId);
             if (!shop) return res.status(400).send('shop not found');
-            console.log(shopId);
 
             const flower = await FlowerModel.findById(flowerId);
             if(!flower) return res.status(400).send('flower not found'); 
-            console.log(flowerId);
 
 
             let userJwt = String(req.user._id);
@@ -166,11 +161,9 @@ export default {
 
             const shop = await ShopModel.findById(shopId);
             if (!shop) return res.status(400).send('shop not found');
-            console.log(shopId);
             
             const flower = await FlowerModel.findById(flowerId);
             if(!flower) return res.status(400).send('flower not found'); 
-            console.log(flowerId);
 
 
             let userJwt = String(req.user._id);

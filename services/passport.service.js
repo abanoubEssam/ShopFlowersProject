@@ -1,4 +1,6 @@
 import bcrypt from 'bcrypt';
+import config from 'config';
+import { Mongoose } from 'mongoose';
 
 const {UserModel} = require('../models/user.models');
 var passport = require('passport'),
@@ -16,16 +18,16 @@ passport.use(new LocalStrategy({
         let user = await UserModel.findOne({
             email: username
         });
-
+        // console.log(' user --==**** ' , user)
         if (!user) {
             return done(null, false, {
                 message: 'Incorrect username.'
             });
         }
         const validPassword = await bcrypt.compare(password, user.password);
-        if (!validPassword) return done(new Error('invalid email or password'));
-
-
+        // console.log('password --**' , password , ' user.password --**** ' , user.password)
+        // console.log('validPassword*****' , validPassword)
+        if (!validPassword) return done(new Error('invalid email or password!!!!'));
         return done(null, user);
 
     }
@@ -34,10 +36,10 @@ passport.use(new LocalStrategy({
 
 var opts = {}
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = 'jwtPrivateKey';
+opts.secretOrKey = config.get('jwtPrivateKey');
 passport.use(new JwtStrategy(opts, async function (jwt_payload, done) {
-     let user = await UserModel.findById(jwt_payload.sub);
-    // console.log(jwt_payload, user);
+     let user = await UserModel.findById(jwt_payload.id);
+    //  console.log('############', jwt_payload.id, user);
     if (user) {
         return done(null, user);
     } else {

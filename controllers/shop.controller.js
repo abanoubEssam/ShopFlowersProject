@@ -25,15 +25,15 @@ export default {
             const shops = await ShopModel.find()
                 .skip((pageNumber - 1) * pageSize)
                 .limit(pageSize)
-                .select('name shopImage');
+                // .select('name shopImage');
 
-            console.log(shops.length);
+            // console.log(shops.length);
             const countShop = await ShopModel.count();
-            console.log('all shops : ', countShop);
+            // console.log('all shops : ', countShop);
             let remainingShops = Math.ceil(countShop - pageSize);
-            console.log('remaining pages : ', Math.ceil(remainingShops / pageSize))
+            // console.log('remaining pages : ', Math.ceil(remainingShops / pageSize))
             let pageCount = Math.ceil(countShop / pageSize)
-            res.send({data: shops, pageNumber , pageSize , totalCount : countShop , pageCount });
+            res.send({ data: shops, pageNumber, pageSize, totalCount: countShop, pageCount });
         } catch (error) {
             next(error);
         }
@@ -84,14 +84,14 @@ export default {
                     coordinates: [req.body.geometryLng, req.body.geometryLat]
                 }
             });
-            res.send(shop);
+            res.status(201).send(shop);
         } catch (error) {
-            console.log(error);
         }
     },
 
     // delete shop using id
     async delete(req, res, next) {
+
         try {
             // chech if it is right id
             if (!mongoose.Types.ObjectId.isValid(req.params.shopId)) {
@@ -109,6 +109,7 @@ export default {
 
     // update shop name
     async updateShop(req, res, next) {
+        
         try {
             // chech if it is right id
             if (!mongoose.Types.ObjectId.isValid(req.params.shopId)) {
@@ -150,6 +151,7 @@ export default {
 
     // find shop by id
     async findeShopById(req, res, next) {
+
         try {
             const shop = await ShopModel.findById(req.params.shopId);
             if (!shop) return res.status(404).send('The shop with the given ID was not found.');

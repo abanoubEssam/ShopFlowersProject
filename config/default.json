@@ -1,0 +1,4 @@
+{
+    "jwtPrivateKey": "my secret",
+    "db":"mongodb://localhost/ShopsFlowers"
+}
