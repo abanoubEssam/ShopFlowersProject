@@ -2,11 +2,11 @@ import orderController from "../controllers/order.controller"
 
 import { JWTAuth } from "../services/passport.service"
 const express = require('express');
-const router = express.Router();
+const router = express.Router({mergeParams : true});
 
-router.post('/:userId/orders' , JWTAuth , orderController.makeOrder);
-router.get('/:userId/orders' , JWTAuth , orderController.getOrder );
+router.post('/' , JWTAuth , orderController.makeOrder);
+router.get('/' , JWTAuth , orderController.getOrder );
 
-router.delete('/:userId/orders/:orderId' , JWTAuth , orderController.deleteOrder);
+router.delete('/:orderId' , JWTAuth , orderController.deleteOrder);
 
 module.exports = router;

@@ -4,6 +4,15 @@ import { JWTAuth } from "../services/passport.service"
 const express = require('express');
 const router = express.Router();
 
+import favFlowerRoute from './favflowers.routes';
+import cartsRoute from './cart.routes'
+import orderRoute from './order.routes';
+
+
+router.use('/:userId/favourites' , favFlowerRoute);
+router.use('/:userId/orders' , orderRoute)
+router.use('/:userId/cart' , cartsRoute)
+
 
 
 router.get('/', userController.findAll);

@@ -83,7 +83,7 @@ export const validateOnUpdateSchema = {
 
 export const CreateShopSchema = {
   type: "object",
-  required: ['name', 'geometryLng', 'geometryLat'],
+  required: ['name'],
   properties: {
     name: {
       type: 'string',

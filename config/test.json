@@ -1,0 +1,4 @@
+{
+    "jwtPrivateKey": "1234",
+    "db":"mongodb+srv://abanoubessam:01280680253Aa!@shop-5bavh.mongodb.net/test?retryWrites=true&w=majority"
+}
