@@ -30,7 +30,6 @@ mongoose.connect( db , {
   .then(() => console.log(`Connected to ${db}...`))
   .catch(err => console.error(`Could not connect to ${db}...`));
 
-
 app.use(express.json());
 app.use(passport.initialize());
 

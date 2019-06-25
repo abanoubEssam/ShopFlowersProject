@@ -3,6 +3,7 @@
   "version": "",
   "scripts": {
     "start": "nodemon --exec babel-node app.js",
+
     "test": "jest global.spec.js  --watchAll --verbose --runInBand"
   },
   "dependencies": {
