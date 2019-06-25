@@ -9,12 +9,8 @@ const shops = require('./routes/shop.routes');
 const User = require('./routes/user.routes');
 const auth = require('./routes/auth.routes');
 
-// const FavFlower = require('./routes/favflowers.routes');
 const globalFlowers = require('./routes/allFlowers.routes');
-// const Sponsored = require('./routes/sponsor.routes');
 
-// const Order = require('./routes/order.routes');
-// const Carts = require('./routes/cart.routes');
 const pushNotification = require('./routes/user-push-token.routes');
 const Notification = require('./routes/notification.routes');
 const express = require('express');
@@ -55,7 +51,6 @@ app.use((err, req, res, next) => {
   res.status(err.status || 400).send(err.message);
 });
 
-// module.exports = app;
 
 const port = process.env.PORT || 3000;
 
