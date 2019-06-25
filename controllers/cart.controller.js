@@ -6,10 +6,10 @@ import { FlowerModel } from '../models/flower.models';
 export default {
     async makeCart(req, res, next) {
         try {
-            let flowerId = String(req.params.flowerId);
-            let userId = String(req.params.userId);
-            console.log(flowerId);
-            console.log(userId);
+            const flowerId = String(req.params.flowerId);
+            const userId = String(req.params.userId);
+            // console.log('flowerId' ,flowerId);
+            // console.log('userId' , userId);
             if (!mongoose.Types.ObjectId.isValid(userId)) {
                 return res.status(400).send('please enter a valid  id for user '); // They didn't send an object ID
             }
@@ -19,7 +19,7 @@ export default {
             }
 
             const flower = await FlowerModel.findById(flowerId);
-            console.log(flowerId);
+            // console.log('flowerId 2 ' , flowerId);
             if (!flower) return res.status(404).send('flower not found');
 
             if (String(req.user._id) !== String(userId)) return res.status(403).send('you are not allowed to access .');
@@ -32,7 +32,7 @@ export default {
                     totalPrice: +flower.price
                 }
             }
-            console.log(flower);
+            // console.log(flower);
             let Cart = await CartModel.findOneAndUpdate({ user: userId }, updateData, { upsert: true, new: true });
             res.send(Cart);
         } catch (error) {
@@ -50,7 +50,8 @@ export default {
             const flower = await CartModel.find({ user: userId }).populate('flowers');
   
             if (String(req.user._id) !== String(userId)) return res.status(403).send('you are not allowed to access .');
-            console.log(flower.flowers);
+           
+            
             // const favFlowers = await FavModel.find({ user: userId }).populate('flower');
             
             res.send(flower);

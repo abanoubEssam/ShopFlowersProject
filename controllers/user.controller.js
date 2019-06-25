@@ -2,7 +2,7 @@ const { UserModel, validateUserOnUpdateSchema, SignUpSchema } = require('../mode
 import mongoose from 'mongoose';
 import { validate } from '../services/validator.service';
 import jwt from 'jsonwebtoken';
-
+import config from 'config'
 const bcrypt = require('bcrypt');
 function checkCurrentUser(currentUser, paramUserId) {
 
@@ -47,7 +47,7 @@ export default {
                 userImage: 'http://localhost:3000/uploads/' + req.file.originalname
             });
 
-            const token = jwt.sign({sub: user._id} , 'jwtPrivateKey');
+            const token = jwt.sign({id: user._id } , config.get('jwtPrivateKey'));
 
             res.send({
                 user,

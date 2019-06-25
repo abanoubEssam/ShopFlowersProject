@@ -1,8 +1,12 @@
+import config from 'config'
 import jwt from 'jsonwebtoken';
+
+
 export default {
     async Login(req, res) {
-        console.log(req.user);
-        const token = jwt.sign({sub: req.user._id} , 'jwtPrivateKey');
+
+
+        const token = jwt.sign({id: req.user._id } , config.get('jwtPrivateKey'));
         let respo = {
             user: req.user,
             accessToken: token

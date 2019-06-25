@@ -3,7 +3,7 @@ import {ShopModel} from '../models/shop.models';
 const mongoose = require('mongoose');
 
 export default {
-    async makeItSponsered(req , res , next){
+    async makeItSponsored(req , res , next){
         let { shopId , flowerId } = req.params;
         try {
             if (!mongoose.Types.ObjectId.isValid(req.params.shopId)) {

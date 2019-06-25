@@ -5,28 +5,32 @@ import { sendNotifi } from '../services/notification.service'
 import { FlowerModel } from '../models/flower.models'
 import { ShopModel } from '../models/shop.models'
 import { UserModel } from '../models/user.models'
-import dsClient from '../services/deepstreem.client.service'
+// import dsClient from '../services/deepstreem.client.service'
 export default {
 
     async makeOrder(req, res, next) {
         try {
+            console.log('params : ', req.params)
             let userId = String(req.params.userId);
-
+            console.log('params : ', userId)
             if (!mongoose.Types.ObjectId.isValid(userId)) {
+                console.log('please enter a valid  id for user')
                 return res.status(400).send('please enter a valid  id for user '); // They didn't send an object ID
             }
 
             if (String(req.user._id) !== String(userId)) return res.status(403).send('you are not allowed to access .');
             // const flowers = await CartModel.find({user : userId}).populate('flowers');
             const getCartData = await CartModel.findOne({ user: userId });
-
+            console.log('getcart data', getCartData)
             if (!getCartData)
                 return res.status(404).send('that cart not found');
+
 
             let shopOrders = {};
 
             for (let flowerIdInCart of getCartData.flowers) {
                 let flower = await FlowerModel.findById(flowerIdInCart);
+                // console.log(shopOrders[flower.shop])
                 if (!shopOrders[flower.shop])
                     shopOrders[flower.shop] = { flowers: [], price: 0 }
 
@@ -42,18 +46,21 @@ export default {
                     totalPrice: shopOrders[shopId].price,
                     shop: shopId
                 });
-                
-                let shop =  await ShopModel.findById(shopId);
+
+                let shop = await ShopModel.findById(shopId);
                 let userName = await UserModel.findById(userId);
                 let shopOwner = shop.user;
-                console.log('shop user' , shop.user);
-                console.log(' user name ' , userName.name);
+                // console.log('shop user', shop.user);
+                // console.log(' user name ', userName.name);
                 // user :  find shop by id and get its user id
                 //text : name of user ordered take an order
-                await sendNotifi(shopOwner , userName.name + " make order from your shop" )
-                console.log(shopOwner);
-                console.log(`/providers/${shopOwner}`);
-                dsClient.event.emit(`/providers/${shopOwner}` , {newOrder: true , shopId});
+                await sendNotifi(shopOwner, userName.name + " make order from your shop")
+                // console.log(shopOwner);
+                // console.log(`/providers/${shopOwner}`);
+               
+               
+               // dont comment it and use import deepstream above
+                // dsClient.event.emit(`/providers/${shopOwner}`, { newOrder: true, shopId });
             })
 
 

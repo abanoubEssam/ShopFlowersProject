@@ -48,7 +48,7 @@ SignUpSwaggerSchema.properties = {
 // create shop schema
 const CreateShopSwaggerSchema = clone(CreateShopSchema);
 // to add more required fields in this schema 
-CreateShopSwaggerSchema.required.push(['']);
+// CreateShopSwaggerSchema.required.push(['']);
 CreateShopSwaggerSchema.properties = {
     ...CreateShopSwaggerSchema.properties ,
     
@@ -820,7 +820,7 @@ const options = {
                     },
                 }
             },
-            '/flowers/':{
+            '/flowers':{
                 get:{
                     tags: ['Flowers'],
                     summary: ['Get All Flowers'],
@@ -1008,12 +1008,12 @@ const options = {
                     },
                 }
             },
-            '/shops/{shopId}/flowers/{flowerId}/sponsered': {
+            '/shops/{shopId}/flowers/{flowerId}/sponsored': {
                 put: {
-                    tags: ['Sponsered'],
-                    summary: ['update one of all Flowers On A shop to make it sponsered'],
+                    tags: ['Sponsored'],
+                    summary: ['update one of all Flowers On A shop to make it sponsored'],
                     description: 'This can only be done by the logged in user.',
-                    operationId: 'update one of Flowers on one shop make it sponsered',
+                    operationId: 'update one of Flowers on one shop make it sponsored',
                     parameters: [
                         {
                             name: "shopId",
@@ -1037,7 +1037,7 @@ const options = {
                    
                     'responses': {
                         '200': {
-                            'description': 'Flower Sponserd successfully',
+                            'description': 'Flower Sponsord successfully',
                         },
                         '403': {
                             'description': 'forbidden',
