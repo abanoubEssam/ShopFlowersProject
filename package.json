@@ -2,13 +2,16 @@
   "name": "flowersshop",
   "version": "",
   "scripts": {
-    "start": "nodemon --exec babel-node app.js",
+    "prod": "nodemon --exec babel-node src/app.js",
+    "start": "node dist/app.js",
+    "bld": "babel 'src' --out-dir 'dist' --presets=@babel/env --plugins=@babel/plugin-proposal-object-rest-spread,@babel/plugin-transform-runtime --copy-files",
     "test": "jest global.spec.js  --watchAll --verbose --runInBand"
   },
   "engines": {
     "node": "8.10.0"
   },
   "dependencies": {
+    "@babel/runtime": "^7.4.5",
     "@types/jest": "^24.0.15",
     "@types/mongodb": "^3.1.28",
     "@types/mongoose": "^5.5.6",

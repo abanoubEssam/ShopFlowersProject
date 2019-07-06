@@ -1,12 +1,12 @@
 import request from 'supertest'
-import { FlowerModel } from '../../../models/flower.models'
-const { ShopModel } = require('../../../models/shop.models')
-const { UserModel } = require('../../../models/user.models')
+import { FlowerModel } from '../../../src/models/flower.models'
+const { ShopModel } = require('../../../src/models/shop.models')
+const { UserModel } = require('../../../src/models/user.models')
 
 let server;
 
 export const flowerTest = () => {
-    beforeEach(() => { server = require('../../../app') })
+    beforeEach(() => { server = require('../../../src/app') })
     afterEach(async () => {
         await server.close();
     })

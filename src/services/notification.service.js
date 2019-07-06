@@ -1,6 +1,6 @@
 import * as admin from 'firebase-admin'
 import { PushNotifiModel } from '../models/user-push-token.models'
-var serviceAccount = require("../demoapp-36a8a-firebase-adminsdk-lif7y-5061a110a8.json");
+var serviceAccount = require("../../demoapp-36a8a-firebase-adminsdk-lif7y-5061a110a8.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),

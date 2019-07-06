@@ -52,8 +52,7 @@ export default {
             // then hashed the password
             const salt = await bcrypt.genSalt(10);
             let testDate = Date.now();
-            // console.log(testDate);
-          console.log('req body password ' , req.body.password);
+            console.log(testDate);
 
             let user = await UserModel.create({
                 name: req.body.name,
@@ -66,7 +65,6 @@ export default {
 
             const token = jwt.sign({id: user._id } , config.get('jwtPrivateKey'));
             console.log('token == ** == : ' , token);
-            // console.log('req.body' , req.body);
             res.send({
                 user,
                 accessToken:token

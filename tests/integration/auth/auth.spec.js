@@ -2,13 +2,13 @@ import request from 'supertest'
 const bcrypt = require('bcrypt');
 
 // /api/auth
-const { UserModel } = require('../../../models/user.models')
+const { UserModel } = require('../../../src/models/user.models')
 
 let server;
 
 export const authTest = () => {
     describe('/api/auth', () => {
-        beforeEach(() => { server = require('../../../app') })
+        beforeEach(() => { server = require('../../../src/app') })
 
         afterEach(async () => {
             await server.close();

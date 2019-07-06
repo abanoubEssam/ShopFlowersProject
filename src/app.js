@@ -31,7 +31,7 @@ app.use(express.json());
 app.use(passport.initialize());
 
 
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static(path.join(__dirname, '..' , 'uploads')));
 app.use('/api/shops', shops);
 app.use('/api/flowers', globalFlowers);
 app.use('/api/users', User);

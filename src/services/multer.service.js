@@ -1,8 +1,17 @@
 const multer = require('multer');
+import makeDir from 'make-dir';
+// const makeDir = require('make-dir');
+
+
+const destFolder = 'uploads';
+
+
 
 const storage = multer.diskStorage({
-    destination: function (req , file , cb) {
-        cb(null , './uploads');
+    destination: async function (req , file , cb) {
+        const path = await makeDir(destFolder);
+
+        cb(null , `./${destFolder}`);
     },
     filename: function (req , file , cb) {
         cb(null , file.originalname);

@@ -1,7 +1,7 @@
 // const request = require('supertest');
 import request from 'supertest'
-const { UserModel } = require('../../../models/user.models')
-const { ShopModel } = require('../../../models/shop.models')
+const { UserModel } = require('../../../src/models/user.models')
+const { ShopModel } = require('../../../src/models/shop.models')
 
 
 let server;
@@ -10,7 +10,7 @@ let server;
 export const userTest = () => {
     describe('/api/users', () => {
 
-        beforeEach(() => { server = require('../../../app') })
+        beforeEach(() => { server = require('../../../src/app') })
     
         afterEach(async () => {
             await server.close();
