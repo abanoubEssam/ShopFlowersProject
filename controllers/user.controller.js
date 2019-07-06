@@ -4,13 +4,28 @@ import { validate } from '../services/validator.service';
 import jwt from 'jsonwebtoken';
 import config from 'config'
 const bcrypt = require('bcrypt');
+
+// function APIErrors(req , res , next){
+//     const BadRequest = res.send(message).status(400)
+//     const UnAuthorized = res.status(401)
+//     const Forbidden = res.status(403)
+// }
+
+
 function checkCurrentUser(currentUser, paramUserId) {
 
     if (String(currentUser._id) !== String(paramUserId))
         throw new Error('sorry you are not allowed');
 }
-export default {
 
+function chechPasswordLength(currentPassword){
+    const cPass = currentPassword ;
+    if (cPass.length < 6) {
+        throw new Error('your password is less than 6 char')
+    }
+}
+
+export default {
 
     async findAll(req, res, next) {
         const user = await UserModel.find()
@@ -22,11 +37,12 @@ export default {
 
     async createUser(req, res , next) {
         try {
-            console.log(req.file, '  : here is req.file');
-            console.log(req.body, ' : here is req.body');
+            // console.log(req.file, '  : here is req.file');
+            // console.log(req.body, ' : here is req.body');
             if (!req.file) {
                 res.status(400).send('image is required !');
             }
+            chechPasswordLength(req.body.password)
             validate(req.body, SignUpSchema)
 
             let foundUserEmail = await UserModel.findOne({email : req.body.email});
@@ -36,8 +52,8 @@ export default {
             // then hashed the password
             const salt = await bcrypt.genSalt(10);
             let testDate = Date.now();
-            console.log(testDate);
-          
+            // console.log(testDate);
+          console.log('req body password ' , req.body.password);
 
             let user = await UserModel.create({
                 name: req.body.name,
@@ -46,9 +62,11 @@ export default {
                 creationDate: testDate,
                 userImage: 'http://localhost:3000/uploads/' + req.file.originalname
             });
+            // console.log('user ******  ' , user);
 
             const token = jwt.sign({id: user._id } , config.get('jwtPrivateKey'));
-
+            console.log('token == ** == : ' , token);
+            // console.log('req.body' , req.body);
             res.send({
                 user,
                 accessToken:token
@@ -77,6 +95,7 @@ export default {
         try {
             // check if user id in token = to user id in params
             checkCurrentUser(req.user, req.params.userId);
+            chechPasswordLength(req.body.password)
 
             console.log(req.body);
             validate(req.body, validateUserOnUpdateSchema);

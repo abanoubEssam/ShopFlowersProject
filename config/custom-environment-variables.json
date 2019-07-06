@@ -1,3 +1,4 @@
 {
-  "jwtPrivateKey": "shops_jwtPrivateKey"
+  "jwtPrivateKey": "shops_jwtPrivateKey",
+  "db": "shop_db"
 }

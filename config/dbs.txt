@@ -1,0 +1,2 @@
+"db":"mongodb+srv://abanoubessam:01280680253Aa!@shop-5bavh.mongodb.net/shop-flower-test?retryWrites=true&w=majority"
+"db":"mongodb://localhost/ShopsFlowers"

@@ -23,28 +23,28 @@ const userSchema = new mongoose.Schema({
     minlength: 5,
     maxlength: 1024
   },
-  creationDate:{
+  creationDate: {
     type: Date,
   },
   userImage: {
     type: String
   }
 },
-{
-  toJSON: {
-    // to delete some of model object 
-    transform: function (doc, ret) {
-      ret.id = ret._id;
-      delete ret.__v;
-      delete ret._id;
-      delete ret.password;
+  {
+    toJSON: {
+      // to delete some of model object 
+      transform: function (doc, ret) {
+        ret.id = ret._id;
+        delete ret.__v;
+        delete ret._id;
+        delete ret.password;
+      }
     }
-  }
-})
+  })
 
 
 userSchema.methods.generateAuthToken = function () {
-  const token = jwt.sign({ id: this._id  }, config.get('jwtPrivateKey'));
+  const token = jwt.sign({ id: this._id }, config.get('jwtPrivateKey'));
   // console.log('===============token ================' ,token)
   return token;
 }
@@ -53,18 +53,24 @@ const UserModel = mongoose.model('User', userSchema);
 
 export const validateUserOnUpdateSchema = {
   type: "object",
+  required: ['name', 'email', 'password'],
   properties: {
     name: {
       type: 'string',
-      require: false
+      require: true,
+      minlength: 4
     },
     email: {
       type: 'string',
-      require: false
+      require: true,
+      "format": "email"
+
     },
     password: {
       type: 'string',
-      require: false
+      require: true,
+      minlength: 6,
+      maxlength: 15
     }
   }
 }
@@ -74,15 +80,22 @@ export const SignUpSchema = {
   properties: {
     name: {
       type: 'string',
-      require: true
+      require: true,
+      minlength: 4
     },
     email: {
       type: 'string',
-      require: true
+      require: true,
+      "format": "email"
+
     },
     password: {
       type: 'string',
-      require: true
+      require: true,
+      minlength: 6,
+      maxlength: 15
+
+
     }
 
   }
