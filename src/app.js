@@ -26,7 +26,7 @@ mongoose.connect( db , {
   .then(() => console.log(`Connected to ${db}...`))
   .catch(err => console.error(`Could not connect to ${db}...`));
 
-require('./services/prod')(app)
+// require('./services/prod')(app)
 app.use(express.json());
 app.use(passport.initialize());
 

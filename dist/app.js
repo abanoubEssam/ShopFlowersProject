@@ -37,9 +37,7 @@ mongoose.connect(db, {
   return console.log("Connected to ".concat(db, "..."));
 })["catch"](function (err) {
   return console.error("Could not connect to ".concat(db, "..."));
-});
-
-require('./services/prod')(app);
+}); // require('./services/prod')(app)
 
 app.use(express.json());
 app.use(_passport["default"].initialize());
