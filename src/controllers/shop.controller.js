@@ -1,6 +1,7 @@
 const { ShopModel, validateOnUpdateSchema, CreateShopSchema, GeoSchema } = require('../models/shop.models');
 const mongoose = require('mongoose');
 // const Loc = mongoose.model('Location');
+import {urlConf} from './../utils/urlUpload';
 
 import { validate } from '../services/validator.service';
 
@@ -77,7 +78,7 @@ export default {
             // console.log('shop model : ' , ShopModel , ' : this is a shop model console');
             let shop = await ShopModel.create({
                 name: req.body.name,
-                shopImage: 'http://localhost:3000/uploads/' + req.file.originalname,
+                shopImage: `${urlConf}/uploads/` + req.file.originalname,
                 user: req.user._id,
                 geometry: {
                     type: "Point",
@@ -138,7 +139,7 @@ export default {
             }
 
             if (req.file) {
-                shop.shopImage = 'http://localhost:3000/uploads/' + req.file.originalname
+                shop.shopImage = `${urlConf}/uploads/` + req.file.originalname
             }
 
             await shop.save();

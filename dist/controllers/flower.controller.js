@@ -17,6 +17,8 @@ var _shop = require("../models/shop.models");
 
 var _validator = require("../services/validator.service");
 
+var _urlUpload = require("./../utils/urlUpload");
+
 var mongoose = require('mongoose');
 
 var _default = {
@@ -151,7 +153,7 @@ var _default = {
                 name: req.body.name,
                 description: req.body.description,
                 price: req.body.price,
-                flowerImage: 'http://localhost:3000/uploads/' + req.file.originalname,
+                flowerImage: "".concat(_urlUpload.urlConf, "/uploads/") + req.file.originalname,
                 shop: shopId
               });
 
@@ -424,7 +426,7 @@ var _default = {
               }
 
               if (req.file) {
-                flower.flowerImage = 'http://localhost:3000/uploads/' + req.file.originalname;
+                flower.flowerImage = "".concat(_urlUpload.urlConf, "/uploads/") + req.file.originalname;
               }
 
               _context6.next = 27;

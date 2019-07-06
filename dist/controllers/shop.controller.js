@@ -11,6 +11,8 @@ var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"))
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
+var _urlUpload = require("./../utils/urlUpload");
+
 var _validator = require("../services/validator.service");
 
 var _require = require('../models/shop.models'),
@@ -168,7 +170,7 @@ var _default = {
               _context3.next = 5;
               return ShopModel.create({
                 name: req.body.name,
-                shopImage: 'http://localhost:3000/uploads/' + req.file.originalname,
+                shopImage: "".concat(_urlUpload.urlConf, "/uploads/") + req.file.originalname,
                 user: req.user._id,
                 geometry: {
                   type: "Point",
@@ -319,7 +321,7 @@ var _default = {
               }
 
               if (req.file) {
-                shop.shopImage = 'http://localhost:3000/uploads/' + req.file.originalname;
+                shop.shopImage = "".concat(_urlUpload.urlConf, "/uploads/") + req.file.originalname;
               }
 
               _context5.next = 16;

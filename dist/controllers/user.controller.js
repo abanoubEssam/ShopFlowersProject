@@ -19,18 +19,20 @@ var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 
 var _config = _interopRequireDefault(require("config"));
 
+var _urlUpload = require("./../utils/urlUpload");
+
 var _require = require('../models/user.models'),
     UserModel = _require.UserModel,
     validateUserOnUpdateSchema = _require.validateUserOnUpdateSchema,
     SignUpSchema = _require.SignUpSchema;
 
-var bcrypt = require('bcrypt'); // function APIErrors(req , res , next){
+var bcrypt = require('bcrypt');
+
+// function APIErrors(req , res , next){
 //     const BadRequest = res.send(message).status(400)
 //     const UnAuthorized = res.status(401)
 //     const Forbidden = res.status(403)
 // }
-
-
 function checkCurrentUser(currentUser, paramUserId) {
   if (String(currentUser._id) !== String(paramUserId)) throw new Error('sorry you are not allowed');
 }
@@ -125,7 +127,7 @@ var _default = {
             case 19:
               _context2.t3 = _context2.sent;
               _context2.t4 = testDate;
-              _context2.t5 = 'http://localhost:3000/uploads/' + req.file.originalname;
+              _context2.t5 = "".concat(_urlUpload.urlConf, "/uploads/") + req.file.originalname;
               _context2.t6 = {
                 name: _context2.t1,
                 email: _context2.t2,
@@ -263,7 +265,7 @@ var _default = {
 
             case 15:
               if (req.file) {
-                updateData.userImage = 'http://localhost:3000/uploads/' + req.file.originalname;
+                updateData.userImage = "".concat(_urlUpload.urlConf, "/uploads/") + req.file.originalname;
               }
 
               _context4.next = 18;

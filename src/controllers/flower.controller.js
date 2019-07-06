@@ -2,6 +2,7 @@ import { FlowerModel, insertFlowerSchema , validateOnUpdateFlowerSchema } from '
 import {ShopModel} from '../models/shop.models';
 const mongoose = require('mongoose');
 import { validate } from '../services/validator.service';
+import {urlConf} from './../utils/urlUpload';
 
 export default {
     async findAllFowers(req , res , next){
@@ -51,7 +52,7 @@ export default {
                 name: req.body.name,
                 description: req.body.description,
                 price: req.body.price,
-                flowerImage: 'http://localhost:3000/uploads/' + req.file.originalname,
+                flowerImage: `${urlConf}/uploads/` + req.file.originalname,
                 shop: shopId
             });
             res.status(201).send(flower);
@@ -139,7 +140,7 @@ export default {
             }
 
             if (req.file) {
-                flower.flowerImage = 'http://localhost:3000/uploads/' + req.file.originalname
+                flower.flowerImage = `${urlConf}/uploads/` + req.file.originalname
             }
 
             await flower.save();

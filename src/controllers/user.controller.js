@@ -4,6 +4,7 @@ import { validate } from '../services/validator.service';
 import jwt from 'jsonwebtoken';
 import config from 'config'
 const bcrypt = require('bcrypt');
+import {urlConf} from './../utils/urlUpload';
 
 // function APIErrors(req , res , next){
 //     const BadRequest = res.send(message).status(400)
@@ -59,7 +60,7 @@ export default {
                 email: req.body.email,
                 password: await bcrypt.hash(req.body.password, salt),
                 creationDate: testDate,
-                userImage: 'http://localhost:3000/uploads/' + req.file.originalname
+                userImage: `${urlConf}/uploads/` + req.file.originalname
             });
             // console.log('user ******  ' , user);
 
@@ -110,7 +111,7 @@ export default {
                 updateData.password = await bcrypt.hash(req.body.password, salt);
             }
             if (req.file) {
-                updateData.userImage = 'http://localhost:3000/uploads/' + req.file.originalname
+                updateData.userImage = `${urlConf}/uploads/` + req.file.originalname
             }
             const user = await UserModel.findOneAndUpdate(
                 { _id: req.params.userId },
