@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
@@ -19,10 +19,10 @@ var mongoose = require('mongoose');
 
 var _default = {
   subscribe: function () {
-    var _subscribe = (0, _asyncToGenerator2.default)(
+    var _subscribe = (0, _asyncToGenerator2["default"])(
     /*#__PURE__*/
-    _regenerator.default.mark(function _callee(req, res, next) {
-      return _regenerator.default.wrap(function _callee$(_context) {
+    _regenerator["default"].mark(function _callee(req, res, next) {
+      return _regenerator["default"].wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
@@ -65,11 +65,11 @@ var _default = {
     return subscribe;
   }(),
   unSubscribe: function () {
-    var _unSubscribe = (0, _asyncToGenerator2.default)(
+    var _unSubscribe = (0, _asyncToGenerator2["default"])(
     /*#__PURE__*/
-    _regenerator.default.mark(function _callee2(req, res, next) {
+    _regenerator["default"].mark(function _callee2(req, res, next) {
       var token;
-      return _regenerator.default.wrap(function _callee2$(_context2) {
+      return _regenerator["default"].wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
@@ -118,4 +118,4 @@ var _default = {
     return unSubscribe;
   }()
 };
-exports.default = _default;
+exports["default"] = _default;

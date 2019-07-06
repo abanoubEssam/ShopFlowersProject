@@ -2,7 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
 var _shop = require("../models/shop.models");
 
@@ -12,14 +12,16 @@ var _flower = require("../models/flower.models");
 
 var _clone = _interopRequireDefault(require("clone"));
 
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { if (i % 2) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { (0, _defineProperty2["default"])(target, key, source[key]); }); } else { Object.defineProperties(target, Object.getOwnPropertyDescriptors(arguments[i])); } } return target; }
+
 var swaggerUI = require('swagger-ui-express');
 
 var swaggerJsDoc = require('swagger-jsdoc');
 
 // get a copy of object and update it then use it
 // update shop schema
-var validateOnUpdateSwaggerSchema = (0, _clone.default)(_shop.validateOnUpdateSchema);
-validateOnUpdateSwaggerSchema.properties = (0, _objectSpread2.default)({}, validateOnUpdateSwaggerSchema.properties, {
+var validateOnUpdateSwaggerSchema = (0, _clone["default"])(_shop.validateOnUpdateSchema);
+validateOnUpdateSwaggerSchema.properties = _objectSpread({}, validateOnUpdateSwaggerSchema.properties, {
   shopImage: {
     description: 'file to upload',
     type: 'string',
@@ -28,8 +30,8 @@ validateOnUpdateSwaggerSchema.properties = (0, _objectSpread2.default)({}, valid
   // update user schema
 
 });
-var validateUserOnUpdateSwaggerSchema = (0, _clone.default)(_user.validateUserOnUpdateSchema);
-validateUserOnUpdateSwaggerSchema.properties = (0, _objectSpread2.default)({}, validateUserOnUpdateSwaggerSchema.properties, {
+var validateUserOnUpdateSwaggerSchema = (0, _clone["default"])(_user.validateUserOnUpdateSchema);
+validateUserOnUpdateSwaggerSchema.properties = _objectSpread({}, validateUserOnUpdateSwaggerSchema.properties, {
   userImage: {
     description: 'file to upload',
     type: 'string',
@@ -38,8 +40,8 @@ validateUserOnUpdateSwaggerSchema.properties = (0, _objectSpread2.default)({}, v
   // create user schema
 
 });
-var SignUpSwaggerSchema = (0, _clone.default)(_user.SignUpSchema);
-SignUpSwaggerSchema.properties = (0, _objectSpread2.default)({}, SignUpSwaggerSchema.properties, {
+var SignUpSwaggerSchema = (0, _clone["default"])(_user.SignUpSchema);
+SignUpSwaggerSchema.properties = _objectSpread({}, SignUpSwaggerSchema.properties, {
   userImage: {
     description: 'file to upload',
     type: 'string',
@@ -48,27 +50,27 @@ SignUpSwaggerSchema.properties = (0, _objectSpread2.default)({}, SignUpSwaggerSc
   // create shop schema
 
 });
-var CreateShopSwaggerSchema = (0, _clone.default)(_shop.CreateShopSchema); // to add more required fields in this schema 
+var CreateShopSwaggerSchema = (0, _clone["default"])(_shop.CreateShopSchema); // to add more required fields in this schema 
 // CreateShopSwaggerSchema.required.push(['']);
 
-CreateShopSwaggerSchema.properties = (0, _objectSpread2.default)({}, CreateShopSwaggerSchema.properties, {
+CreateShopSwaggerSchema.properties = _objectSpread({}, CreateShopSwaggerSchema.properties, {
   shopImage: {
     description: 'file to upload',
     type: 'string',
     format: 'binary'
   }
 });
-var CreateFlowerSwaggerSchema = (0, _clone.default)(_flower.insertFlowerSchema);
+var CreateFlowerSwaggerSchema = (0, _clone["default"])(_flower.insertFlowerSchema);
 CreateFlowerSwaggerSchema.required.push('flowerImage', 'price');
-CreateFlowerSwaggerSchema.properties = (0, _objectSpread2.default)({}, CreateFlowerSwaggerSchema.properties, {
+CreateFlowerSwaggerSchema.properties = _objectSpread({}, CreateFlowerSwaggerSchema.properties, {
   flowerImage: {
     description: 'file to upload',
     type: 'string',
     format: 'binary'
   }
 });
-var validateUpdateFlowerSwaggerSchema = (0, _clone.default)(_flower.validateOnUpdateFlowerSchema);
-validateUpdateFlowerSwaggerSchema.properties = (0, _objectSpread2.default)({}, validateUpdateFlowerSwaggerSchema.properties, {
+var validateUpdateFlowerSwaggerSchema = (0, _clone["default"])(_flower.validateOnUpdateFlowerSchema);
+validateUpdateFlowerSwaggerSchema.properties = _objectSpread({}, validateUpdateFlowerSwaggerSchema.properties, {
   flowerImage: {
     description: 'file to upload',
     type: 'string',
@@ -145,7 +147,7 @@ var options = {
           operationId: 'get user by id',
           parameters: [{
             name: "userId",
-            in: "path",
+            "in": "path",
             description: "ID of user to return",
             required: true,
             schema: {
@@ -161,14 +163,14 @@ var options = {
             }
           }
         },
-        delete: {
+        "delete": {
           tags: ['users'],
           summary: ['Delete User by id'],
           description: 'This can only be done by the logged in user.',
           operationId: 'get user and delete',
           parameters: [{
             name: "userId",
-            in: "path",
+            "in": "path",
             description: "ID of user to return",
             required: true,
             schema: {
@@ -191,7 +193,7 @@ var options = {
           operationId: 'get user and update',
           parameters: [{
             name: "userId",
-            in: "path",
+            "in": "path",
             required: true,
             description: "ID of user to return",
             schema: {
@@ -223,7 +225,7 @@ var options = {
           operationId: 'get user by id and fav',
           parameters: [{
             name: "userId",
-            in: "path",
+            "in": "path",
             description: "ID of user to return",
             required: true,
             schema: {
@@ -231,7 +233,7 @@ var options = {
             }
           }, {
             name: "flowerId",
-            in: "path",
+            "in": "path",
             description: "ID of user to return",
             required: true,
             schema: {
@@ -254,7 +256,7 @@ var options = {
           operationId: 'post user by id and fav',
           parameters: [{
             name: "userId",
-            in: "path",
+            "in": "path",
             description: "ID of user to return",
             required: true,
             schema: {
@@ -262,7 +264,7 @@ var options = {
             }
           }, {
             name: "flowerId",
-            in: "path",
+            "in": "path",
             description: "ID of user to return",
             required: true,
             schema: {
@@ -278,14 +280,14 @@ var options = {
             }
           }
         },
-        delete: {
+        "delete": {
           tags: ['users favourites'],
           summary: ['delete fav for User by id and his/her favourite flower by id'],
           description: 'This can only be done by the logged in user.',
           operationId: 'delete user by id and fav',
           parameters: [{
             name: "userId",
-            in: "path",
+            "in": "path",
             description: "ID of user to return",
             required: true,
             schema: {
@@ -293,7 +295,7 @@ var options = {
             }
           }, {
             name: "flowerId",
-            in: "path",
+            "in": "path",
             description: "ID of user to return",
             required: true,
             schema: {
@@ -318,7 +320,7 @@ var options = {
           operationId: 'get user by id and all fav',
           parameters: [{
             name: "userId",
-            in: "path",
+            "in": "path",
             description: "ID of user to return",
             required: true,
             schema: {
@@ -343,7 +345,7 @@ var options = {
           operationId: 'get user by id and fav',
           parameters: [{
             name: "userId",
-            in: "path",
+            "in": "path",
             description: "ID of user to return cart",
             required: true,
             schema: {
@@ -368,7 +370,7 @@ var options = {
           operationId: 'Post user by id and fav',
           parameters: [{
             name: "userId",
-            in: "path",
+            "in": "path",
             description: "ID of user to return",
             required: true,
             schema: {
@@ -376,7 +378,7 @@ var options = {
             }
           }, {
             name: "flowerId",
-            in: "path",
+            "in": "path",
             description: "ID of flower to return",
             required: true,
             schema: {
@@ -392,14 +394,14 @@ var options = {
             }
           }
         },
-        delete: {
+        "delete": {
           tags: ['users carts'],
           summary: ['delete flower of User by id of flower and his/her id'],
           description: 'This can only be done by the logged in user.',
           operationId: 'delete user by id and fav',
           parameters: [{
             name: "userId",
-            in: "path",
+            "in": "path",
             description: "ID of user to return",
             required: true,
             schema: {
@@ -407,7 +409,7 @@ var options = {
             }
           }, {
             name: "flowerId",
-            in: "path",
+            "in": "path",
             description: "ID of flower to return",
             required: true,
             schema: {
@@ -432,7 +434,7 @@ var options = {
           operationId: 'get Order',
           parameters: [{
             name: "userId",
-            in: "path",
+            "in": "path",
             description: "ID of user to return cart",
             required: true,
             schema: {
@@ -455,7 +457,7 @@ var options = {
           operationId: 'Post Order',
           parameters: [{
             name: "userId",
-            in: "path",
+            "in": "path",
             description: "ID of user to return cart",
             required: true,
             schema: {
@@ -473,14 +475,14 @@ var options = {
         }
       },
       '/users/{userId}/orders/{orderId}': {
-        delete: {
+        "delete": {
           tags: ['orders'],
           summary: ['delete an Order of user using id'],
           description: 'this can only be done by the logged in user',
           operationId: 'delete Order',
           parameters: [{
             name: "userId",
-            in: "path",
+            "in": "path",
             description: "ID of user to return cart",
             required: true,
             schema: {
@@ -488,7 +490,7 @@ var options = {
             }
           }, {
             name: "orderId",
-            in: "path",
+            "in": "path",
             description: "ID of order to delete order",
             required: true,
             schema: {
@@ -522,14 +524,14 @@ var options = {
         }
       },
       '/push-notifications/unsubscribe?token={token}': {
-        delete: {
+        "delete": {
           tags: ['Push-Notification'],
           summary: ['delete token from user'],
           description: 'This can only be done by the logged in user.',
           operationId: 'delete notification',
           parameters: [{
             name: "token",
-            in: "path",
+            "in": "path",
             description: " delete token ",
             required: true,
             schema: {
@@ -554,7 +556,7 @@ var options = {
           operationId: 'post notification',
           parameters: [{
             name: "token",
-            in: "path",
+            "in": "path",
             description: " post token ",
             required: true,
             schema: {
@@ -602,14 +604,14 @@ var options = {
           operationId: 'get shop',
           parameters: [{
             name: "pageNumber",
-            in: "path",
+            "in": "path",
             description: "Number of Page to return shops",
             schema: {
               type: "number"
             }
           }, {
             name: "pageSize",
-            in: "path",
+            "in": "path",
             description: "Number of shops to return shops",
             schema: {
               type: "number"
@@ -633,7 +635,7 @@ var options = {
           operationId: 'get shops near me',
           parameters: [{
             name: "lng",
-            in: "path",
+            "in": "path",
             description: "Lng to return shop",
             required: true,
             schema: {
@@ -641,7 +643,7 @@ var options = {
             }
           }, {
             name: "lat",
-            in: "path",
+            "in": "path",
             description: "Lat to return shop",
             required: true,
             schema: {
@@ -649,11 +651,11 @@ var options = {
             }
           }, {
             name: "radius",
-            in: "path",
+            "in": "path",
             description: "radius to return shops on radius",
             schema: {
               type: "number",
-              default: 10
+              "default": 10
             }
           }],
           'responses': {
@@ -674,7 +676,7 @@ var options = {
           operationId: 'Update Shop',
           parameters: [{
             name: "shopId",
-            in: "path",
+            "in": "path",
             required: true,
             description: "ID of Shop to return",
             schema: {
@@ -704,7 +706,7 @@ var options = {
           operationId: 'get shop by id',
           parameters: [{
             name: "shopId",
-            in: "path",
+            "in": "path",
             description: "ID of shop to return ",
             required: true,
             schema: {
@@ -720,14 +722,14 @@ var options = {
             }
           }
         },
-        delete: {
+        "delete": {
           tags: ['shops'],
           summary: ['Delete Shop using id'],
           description: 'This can only be done by the logged in user.',
           operationId: 'delete shop by id',
           parameters: [{
             name: "shopId",
-            in: "path",
+            "in": "path",
             description: "ID of Shop to return ",
             required: true,
             schema: {
@@ -768,7 +770,7 @@ var options = {
           operationId: 'Create Flowers',
           parameters: [{
             name: "shopId",
-            in: "path",
+            "in": "path",
             description: "ID of shop to add flower in it",
             required: true,
             schema: {
@@ -798,7 +800,7 @@ var options = {
           operationId: 'Get All Flowers on one shop',
           parameters: [{
             name: "shopId",
-            in: "path",
+            "in": "path",
             description: "ID of shop to Get flower in it",
             required: true,
             schema: {
@@ -823,7 +825,7 @@ var options = {
           operationId: 'Get one of Flowers on one shop',
           parameters: [{
             name: "shopId",
-            in: "path",
+            "in": "path",
             description: "ID of shop to Get flower in it",
             required: true,
             schema: {
@@ -831,7 +833,7 @@ var options = {
             }
           }, {
             name: "flowerId",
-            in: "path",
+            "in": "path",
             description: "ID of flower to Get flower data",
             required: true,
             schema: {
@@ -854,7 +856,7 @@ var options = {
           operationId: 'update one of Flowers on one shop',
           parameters: [{
             name: "shopId",
-            in: "path",
+            "in": "path",
             description: "ID of shop to Get flower in it",
             required: true,
             schema: {
@@ -862,7 +864,7 @@ var options = {
             }
           }, {
             name: "flowerId",
-            in: "path",
+            "in": "path",
             description: "ID of flower to Get flower data",
             required: true,
             schema: {
@@ -885,14 +887,14 @@ var options = {
             }
           }
         },
-        delete: {
+        "delete": {
           tags: ['Flowers'],
           summary: ['Delete flower using id of shop and flower'],
           description: 'This can only be done by the logged in user.',
           operationId: 'delete flower by id of shop and flower',
           parameters: [{
             name: "shopId",
-            in: "path",
+            "in": "path",
             description: "ID of Shop to return ",
             required: true,
             schema: {
@@ -900,7 +902,7 @@ var options = {
             }
           }, {
             name: "flowerId",
-            in: "path",
+            "in": "path",
             description: "ID of flower to return ",
             required: true,
             schema: {
@@ -925,7 +927,7 @@ var options = {
           operationId: 'update one of Flowers on one shop make it sponsored',
           parameters: [{
             name: "shopId",
-            in: "path",
+            "in": "path",
             description: "ID of shop to Get flower in it",
             required: true,
             schema: {
@@ -933,7 +935,7 @@ var options = {
             }
           }, {
             name: "flowerId",
-            in: "path",
+            "in": "path",
             description: "ID of flower to Get flower data",
             required: true,
             schema: {

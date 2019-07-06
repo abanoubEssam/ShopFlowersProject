@@ -11,5 +11,5 @@ var express = require('express');
 var router = express.Router({
   mergeParams: true
 });
-router.put('/:flowerId/sponsored', _passport.JWTAuth, _sponsor.default.makeItSponsored);
+router.put('/:flowerId/sponsored', _passport.JWTAuth, _sponsor["default"].makeItSponsored);
 module.exports = router;

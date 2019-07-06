@@ -12,7 +12,7 @@ var express = require('express');
 
 var router = express.Router(); // flowers
 
-router.get('/', _flower.default.findAllFowers); // this route will be shops/flowers?pageNumber=AnyNum&pageSize=AnyNum
+router.get('/', _flower["default"].findAllFowers); // this route will be shops/flowers?pageNumber=AnyNum&pageSize=AnyNum
 
-router.get('/flowers', _flower.default.findFlowers);
+router.get('/flowers', _flower["default"].findFlowers);
 module.exports = router;

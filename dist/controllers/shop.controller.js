@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
@@ -34,11 +34,11 @@ var _default = {
   //     }
   // },
   findAllUsePagination: function () {
-    var _findAllUsePagination = (0, _asyncToGenerator2.default)(
+    var _findAllUsePagination = (0, _asyncToGenerator2["default"])(
     /*#__PURE__*/
-    _regenerator.default.mark(function _callee(req, res, next) {
+    _regenerator["default"].mark(function _callee(req, res, next) {
       var pageNumber, pageSize, shops, countShop, remainingShops, pageCount;
-      return _regenerator.default.wrap(function _callee$(_context) {
+      return _regenerator["default"].wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
@@ -91,11 +91,11 @@ var _default = {
   }(),
   // to find nearest shop
   findNear: function () {
-    var _findNear = (0, _asyncToGenerator2.default)(
+    var _findNear = (0, _asyncToGenerator2["default"])(
     /*#__PURE__*/
-    _regenerator.default.mark(function _callee2(req, res, next) {
+    _regenerator["default"].mark(function _callee2(req, res, next) {
       var radius, lng, lat, shops;
-      return _regenerator.default.wrap(function _callee2$(_context2) {
+      return _regenerator["default"].wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
@@ -151,11 +151,11 @@ var _default = {
     return findNear;
   }(),
   createShop: function () {
-    var _createShop = (0, _asyncToGenerator2.default)(
+    var _createShop = (0, _asyncToGenerator2["default"])(
     /*#__PURE__*/
-    _regenerator.default.mark(function _callee3(req, res) {
+    _regenerator["default"].mark(function _callee3(req, res) {
       var shop;
-      return _regenerator.default.wrap(function _callee3$(_context3) {
+      return _regenerator["default"].wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
@@ -203,12 +203,12 @@ var _default = {
     return createShop;
   }(),
   // delete shop using id
-  delete: function () {
-    var _delete2 = (0, _asyncToGenerator2.default)(
+  "delete": function () {
+    var _delete2 = (0, _asyncToGenerator2["default"])(
     /*#__PURE__*/
-    _regenerator.default.mark(function _callee4(req, res, next) {
+    _regenerator["default"].mark(function _callee4(req, res, next) {
       var shop;
-      return _regenerator.default.wrap(function _callee4$(_context4) {
+      return _regenerator["default"].wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
@@ -269,11 +269,11 @@ var _default = {
   }(),
   // update shop name
   updateShop: function () {
-    var _updateShop = (0, _asyncToGenerator2.default)(
+    var _updateShop = (0, _asyncToGenerator2["default"])(
     /*#__PURE__*/
-    _regenerator.default.mark(function _callee5(req, res, next) {
+    _regenerator["default"].mark(function _callee5(req, res, next) {
       var shop;
-      return _regenerator.default.wrap(function _callee5$(_context5) {
+      return _regenerator["default"].wrap(function _callee5$(_context5) {
         while (1) {
           switch (_context5.prev = _context5.next) {
             case 0:
@@ -353,11 +353,11 @@ var _default = {
   }(),
   // find shop by id
   findeShopById: function () {
-    var _findeShopById = (0, _asyncToGenerator2.default)(
+    var _findeShopById = (0, _asyncToGenerator2["default"])(
     /*#__PURE__*/
-    _regenerator.default.mark(function _callee6(req, res, next) {
+    _regenerator["default"].mark(function _callee6(req, res, next) {
       var shop;
-      return _regenerator.default.wrap(function _callee6$(_context6) {
+      return _regenerator["default"].wrap(function _callee6$(_context6) {
         while (1) {
           switch (_context6.prev = _context6.next) {
             case 0:
@@ -401,4 +401,4 @@ var _default = {
     return findeShopById;
   }()
 };
-exports.default = _default;
+exports["default"] = _default;
