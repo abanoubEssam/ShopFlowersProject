@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
@@ -23,11 +23,11 @@ var mongoose = require('mongoose');
 
 var _default = {
   findAllFowers: function () {
-    var _findAllFowers = (0, _asyncToGenerator2["default"])(
+    var _findAllFowers = (0, _asyncToGenerator2.default)(
     /*#__PURE__*/
-    _regenerator["default"].mark(function _callee(req, res, next) {
+    _regenerator.default.mark(function _callee(req, res, next) {
       var flowers;
-      return _regenerator["default"].wrap(function _callee$(_context) {
+      return _regenerator.default.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
@@ -55,11 +55,11 @@ var _default = {
     return findAllFowers;
   }(),
   findFlowers: function () {
-    var _findFlowers = (0, _asyncToGenerator2["default"])(
+    var _findFlowers = (0, _asyncToGenerator2.default)(
     /*#__PURE__*/
-    _regenerator["default"].mark(function _callee2(req, res, next) {
+    _regenerator.default.mark(function _callee2(req, res, next) {
       var pageNumber, pageSize, flowers;
-      return _regenerator["default"].wrap(function _callee2$(_context2) {
+      return _regenerator.default.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
@@ -98,11 +98,11 @@ var _default = {
     return findFlowers;
   }(),
   insertFlower: function () {
-    var _insertFlower = (0, _asyncToGenerator2["default"])(
+    var _insertFlower = (0, _asyncToGenerator2.default)(
     /*#__PURE__*/
-    _regenerator["default"].mark(function _callee3(req, res, next) {
+    _regenerator.default.mark(function _callee3(req, res, next) {
       var shopId, shop, userJwt, shopUserId, flower;
-      return _regenerator["default"].wrap(function _callee3$(_context3) {
+      return _regenerator.default.wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
@@ -192,11 +192,11 @@ var _default = {
     return insertFlower;
   }(),
   findFlowersByShopId: function () {
-    var _findFlowersByShopId = (0, _asyncToGenerator2["default"])(
+    var _findFlowersByShopId = (0, _asyncToGenerator2.default)(
     /*#__PURE__*/
-    _regenerator["default"].mark(function _callee4(req, res, next) {
+    _regenerator.default.mark(function _callee4(req, res, next) {
       var shopId, shop, flowers;
-      return _regenerator["default"].wrap(function _callee4$(_context4) {
+      return _regenerator.default.wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
@@ -257,12 +257,12 @@ var _default = {
     return findFlowersByShopId;
   }(),
   findFlowerById: function () {
-    var _findFlowerById = (0, _asyncToGenerator2["default"])(
+    var _findFlowerById = (0, _asyncToGenerator2.default)(
     /*#__PURE__*/
-    _regenerator["default"].mark(function _callee5(req, res, next) {
+    _regenerator.default.mark(function _callee5(req, res, next) {
       var _req$params, shopId, flowerId, shop, flower;
 
-      return _regenerator["default"].wrap(function _callee5$(_context5) {
+      return _regenerator.default.wrap(function _callee5$(_context5) {
         while (1) {
           switch (_context5.prev = _context5.next) {
             case 0:
@@ -345,12 +345,12 @@ var _default = {
     return findFlowerById;
   }(),
   updateFlower: function () {
-    var _updateFlower = (0, _asyncToGenerator2["default"])(
+    var _updateFlower = (0, _asyncToGenerator2.default)(
     /*#__PURE__*/
-    _regenerator["default"].mark(function _callee6(req, res, next) {
+    _regenerator.default.mark(function _callee6(req, res, next) {
       var _req$params2, shopId, flowerId, shop, flower, userJwt, shopUserId;
 
-      return _regenerator["default"].wrap(function _callee6$(_context6) {
+      return _regenerator.default.wrap(function _callee6$(_context6) {
         while (1) {
           switch (_context6.prev = _context6.next) {
             case 0:
@@ -457,12 +457,12 @@ var _default = {
     return updateFlower;
   }(),
   deleteFlower: function () {
-    var _deleteFlower = (0, _asyncToGenerator2["default"])(
+    var _deleteFlower = (0, _asyncToGenerator2.default)(
     /*#__PURE__*/
-    _regenerator["default"].mark(function _callee7(req, res, next) {
+    _regenerator.default.mark(function _callee7(req, res, next) {
       var _req$params3, shopId, flowerId, shop, flower, userJwt, shopUserId, _flower;
 
-      return _regenerator["default"].wrap(function _callee7$(_context7) {
+      return _regenerator.default.wrap(function _callee7$(_context7) {
         while (1) {
           switch (_context7.prev = _context7.next) {
             case 0:
@@ -584,4 +584,4 @@ var _default = {
     return deleteFlower;
   }()
 };
-exports["default"] = _default;
+exports.default = _default;

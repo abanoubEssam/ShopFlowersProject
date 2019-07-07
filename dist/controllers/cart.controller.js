@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
@@ -20,11 +20,11 @@ var mongoose = require('mongoose'); // const Loc = mongoose.model('Location');
 
 var _default = {
   makeCart: function () {
-    var _makeCart = (0, _asyncToGenerator2["default"])(
+    var _makeCart = (0, _asyncToGenerator2.default)(
     /*#__PURE__*/
-    _regenerator["default"].mark(function _callee(req, res, next) {
+    _regenerator.default.mark(function _callee(req, res, next) {
       var flowerId, userId, flower, updateData, Cart;
-      return _regenerator["default"].wrap(function _callee$(_context) {
+      return _regenerator.default.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
@@ -85,7 +85,7 @@ var _default = {
                 user: userId
               }, updateData, {
                 upsert: true,
-                "new": true
+                new: true
               });
 
             case 17:
@@ -114,11 +114,11 @@ var _default = {
     return makeCart;
   }(),
   getCart: function () {
-    var _getCart = (0, _asyncToGenerator2["default"])(
+    var _getCart = (0, _asyncToGenerator2.default)(
     /*#__PURE__*/
-    _regenerator["default"].mark(function _callee2(req, res, next) {
+    _regenerator.default.mark(function _callee2(req, res, next) {
       var userId, flower;
-      return _regenerator["default"].wrap(function _callee2$(_context2) {
+      return _regenerator.default.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
@@ -174,11 +174,11 @@ var _default = {
     return getCart;
   }(),
   deleteFlower: function () {
-    var _deleteFlower = (0, _asyncToGenerator2["default"])(
+    var _deleteFlower = (0, _asyncToGenerator2.default)(
     /*#__PURE__*/
-    _regenerator["default"].mark(function _callee3(req, res, next) {
+    _regenerator.default.mark(function _callee3(req, res, next) {
       var flowerId, userId, flower, cartUser, cartUserFlowersLength, i;
-      return _regenerator["default"].wrap(function _callee3$(_context3) {
+      return _regenerator.default.wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
@@ -299,4 +299,4 @@ var _default = {
     return deleteFlower;
   }()
 };
-exports["default"] = _default;
+exports.default = _default;

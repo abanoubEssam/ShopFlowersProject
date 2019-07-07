@@ -29,19 +29,21 @@ var express = require('express');
 var app = express();
 swaggerDocs(app);
 
-var db = _config["default"].get('db');
+var db = _config.default.get('db');
 
 mongoose.connect(db, {
   useNewUrlParser: true
 }).then(function () {
   return console.log("Connected to ".concat(db, "..."));
-})["catch"](function (err) {
+}).catch(function (err) {
   return console.error("Could not connect to ".concat(db, "..."));
-}); // require('./services/prod')(app)
+});
+
+require('./services/prod')(app);
 
 app.use(express.json());
-app.use(_passport["default"].initialize());
-app.use('/uploads', express["static"](_path["default"].join(__dirname, '..', 'uploads')));
+app.use(_passport.default.initialize());
+app.use('/uploads', express.static(_path.default.join(__dirname, '..', 'uploads')));
 app.use('/api/shops', shops);
 app.use('/api/flowers', globalFlowers);
 app.use('/api/users', User);

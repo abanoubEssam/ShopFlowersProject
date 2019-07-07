@@ -21,9 +21,9 @@ var router = express.Router({
 // shops/:shopId/flowers
 // shops/:shopId/flowers/:flowerId
 
-router.get('/:flowerId', _flower["default"].findFlowerById);
-router.put('/:flowerId', _passport.JWTAuth, _multer.upload.single('flowerImage'), _flower["default"].updateFlower);
-router["delete"]('/:flowerId', _passport.JWTAuth, _flower["default"].deleteFlower);
-router.post('/', _passport.JWTAuth, _multer.upload.single('flowerImage'), _flower["default"].insertFlower);
-router.get('/', _flower["default"].findFlowersByShopId);
+router.get('/:flowerId', _flower.default.findFlowerById);
+router.put('/:flowerId', _passport.JWTAuth, _multer.upload.single('flowerImage'), _flower.default.updateFlower);
+router.delete('/:flowerId', _passport.JWTAuth, _flower.default.deleteFlower);
+router.post('/', _passport.JWTAuth, _multer.upload.single('flowerImage'), _flower.default.insertFlower);
+router.get('/', _flower.default.findFlowersByShopId);
 module.exports = router;

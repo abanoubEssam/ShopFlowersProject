@@ -11,7 +11,7 @@ var express = require('express');
 var router = express.Router({
   mergeParams: true
 });
-router.post('/', _passport.JWTAuth, _order["default"].makeOrder);
-router.get('/', _passport.JWTAuth, _order["default"].getOrder);
-router["delete"]('/:orderId', _passport.JWTAuth, _order["default"].deleteOrder);
+router.post('/', _passport.JWTAuth, _order.default.makeOrder);
+router.get('/', _passport.JWTAuth, _order.default.getOrder);
+router.delete('/:orderId', _passport.JWTAuth, _order.default.deleteOrder);
 module.exports = router;

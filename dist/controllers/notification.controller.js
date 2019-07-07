@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
@@ -17,11 +17,11 @@ var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 
 var _default = {
   getNotification: function () {
-    var _getNotification = (0, _asyncToGenerator2["default"])(
+    var _getNotification = (0, _asyncToGenerator2.default)(
     /*#__PURE__*/
-    _regenerator["default"].mark(function _callee(req, res, next) {
+    _regenerator.default.mark(function _callee(req, res, next) {
       var userId, notifi;
-      return _regenerator["default"].wrap(function _callee$(_context) {
+      return _regenerator.default.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
@@ -69,4 +69,4 @@ var _default = {
     return getNotification;
   }()
 };
-exports["default"] = _default;
+exports.default = _default;

@@ -9,5 +9,5 @@ var _passport = require("../services/passport.service");
 var express = require('express');
 
 var router = express.Router();
-router.post('/', _passport.AuthLocal, _auth["default"].Login);
+router.post('/', _passport.AuthLocal, _auth.default.Login);
 module.exports = router;

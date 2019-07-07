@@ -14,16 +14,16 @@ var multer = require('multer');
 var destFolder = 'uploads';
 var storage = multer.diskStorage({
   destination: function () {
-    var _destination = (0, _asyncToGenerator2["default"])(
+    var _destination = (0, _asyncToGenerator2.default)(
     /*#__PURE__*/
-    _regenerator["default"].mark(function _callee(req, file, cb) {
+    _regenerator.default.mark(function _callee(req, file, cb) {
       var path;
-      return _regenerator["default"].wrap(function _callee$(_context) {
+      return _regenerator.default.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return (0, _makeDir["default"])(destFolder);
+              return (0, _makeDir.default)(destFolder);
 
             case 2:
               path = _context.sent;

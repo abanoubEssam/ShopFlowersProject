@@ -33,11 +33,11 @@ var orderSchema = new mongoose.Schema({
   }],
   totalPrice: {
     type: Number,
-    "default": 0
+    default: 0
   },
   creationDate: {
     type: Date,
-    "default": Date.now()
+    default: Date.now()
   }
 }, {
   toJSON: {

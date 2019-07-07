@@ -28,14 +28,14 @@ var flowerSchema = new mongoose.Schema({
   },
   creationDate: {
     type: Date,
-    "default": Date.now()
+    default: Date.now()
   },
   flowerImage: {
     type: String
   },
   sponsored: {
     type: Boolean,
-    "default": false
+    default: false
   }
 }, {
   toJSON: {

@@ -10,5 +10,5 @@ var _passport = require("../services/passport.service");
 var express = require('express');
 
 var router = express.Router();
-router.get('/', _passport.JWTAuth, _notification["default"].getNotification);
+router.get('/', _passport.JWTAuth, _notification.default.getNotification);
 module.exports = router;

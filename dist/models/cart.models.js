@@ -27,7 +27,7 @@ var cartSchema = new mongoose.Schema({
   }],
   totalPrice: {
     type: Number,
-    "default": 0
+    default: 0
   }
 });
 exports.cartSchema = cartSchema;

@@ -19,27 +19,27 @@ var _wrapNativeSuper2 = _interopRequireDefault(require("@babel/runtime/helpers/w
 
 var _ajv = _interopRequireDefault(require("ajv"));
 
-var ajv = new _ajv["default"]({
+var ajv = new _ajv.default({
   allErrors: true
 });
 
 var ApiError =
 /*#__PURE__*/
 function (_Error) {
-  (0, _inherits2["default"])(ApiError, _Error);
+  (0, _inherits2.default)(ApiError, _Error);
 
   function ApiError(status, errorMessage) {
     var _this;
 
-    (0, _classCallCheck2["default"])(this, ApiError);
-    _this = (0, _possibleConstructorReturn2["default"])(this, (0, _getPrototypeOf2["default"])(ApiError).call(this));
+    (0, _classCallCheck2.default)(this, ApiError);
+    _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(ApiError).call(this));
     _this.status = status;
     _this.message = errorMessage;
     return _this;
   }
 
   return ApiError;
-}((0, _wrapNativeSuper2["default"])(Error));
+}((0, _wrapNativeSuper2.default)(Error));
 
 function validate(data, schema) {
   var validate = ajv.compile(schema);

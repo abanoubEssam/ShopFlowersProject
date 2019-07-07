@@ -10,7 +10,7 @@ var mongoose = require('mongoose');
 var GeoSchema = new mongoose.Schema({
   type: {
     type: String,
-    "default": 'Point'
+    default: 'Point'
   },
   coordinates: {
     type: [Number]
@@ -40,11 +40,11 @@ var shopSchema = new mongoose.Schema({
   },
   creationDate: {
     type: Date,
-    "default": Date.now()
+    default: Date.now()
   },
   totalFlowersCount: {
     type: Number,
-    "default": 0
+    default: 0
   },
   geometry: GeoSchema
 }, {
