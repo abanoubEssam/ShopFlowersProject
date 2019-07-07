@@ -38,62 +38,59 @@ var _default = {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.prev = 0;
-              console.log('params : ', req.params);
-              userId = String(req.params.userId);
-              console.log('params : ', userId);
+              // console.log('params : ', req.params)
+              userId = String(req.params.userId); // console.log('params : ', userId)
 
               if (mongoose.Types.ObjectId.isValid(userId)) {
-                _context2.next = 7;
+                _context2.next = 4;
                 break;
               }
 
-              console.log('please enter a valid  id for user');
               return _context2.abrupt("return", res.status(400).send('please enter a valid  id for user '));
 
-            case 7:
+            case 4:
               if (!(String(req.user._id) !== String(userId))) {
-                _context2.next = 9;
+                _context2.next = 6;
                 break;
               }
 
               return _context2.abrupt("return", res.status(403).send('you are not allowed to access .'));
 
-            case 9:
-              _context2.next = 11;
+            case 6:
+              _context2.next = 8;
               return _cart.CartModel.findOne({
                 user: userId
               });
 
-            case 11:
+            case 8:
               getCartData = _context2.sent;
-              console.log('getcart data', getCartData);
 
               if (getCartData) {
-                _context2.next = 15;
+                _context2.next = 11;
                 break;
               }
 
               return _context2.abrupt("return", res.status(404).send('that cart not found'));
 
-            case 15:
+            case 11:
               shopOrders = {};
               _iteratorNormalCompletion = true;
               _didIteratorError = false;
               _iteratorError = undefined;
-              _context2.prev = 19;
+              _context2.prev = 15;
               _iterator = getCartData.flowers[Symbol.iterator]();
 
-            case 21:
+            case 17:
               if (_iteratorNormalCompletion = (_step = _iterator.next()).done) {
-                _context2.next = 32;
+                _context2.next = 28;
                 break;
               }
 
               flowerIdInCart = _step.value;
-              _context2.next = 25;
+              _context2.next = 21;
               return _flower.FlowerModel.findById(flowerIdInCart);
 
-            case 25:
+            case 21:
               flower = _context2.sent;
               // console.log(shopOrders[flower.shop])
               if (!shopOrders[flower.shop]) shopOrders[flower.shop] = {
@@ -103,46 +100,46 @@ var _default = {
               shopOrders[flower.shop].flowers.push(flower._id);
               shopOrders[flower.shop].price += flower.price;
 
-            case 29:
+            case 25:
               _iteratorNormalCompletion = true;
-              _context2.next = 21;
+              _context2.next = 17;
               break;
 
-            case 32:
-              _context2.next = 38;
+            case 28:
+              _context2.next = 34;
               break;
 
-            case 34:
-              _context2.prev = 34;
-              _context2.t0 = _context2["catch"](19);
+            case 30:
+              _context2.prev = 30;
+              _context2.t0 = _context2["catch"](15);
               _didIteratorError = true;
               _iteratorError = _context2.t0;
 
-            case 38:
-              _context2.prev = 38;
-              _context2.prev = 39;
+            case 34:
+              _context2.prev = 34;
+              _context2.prev = 35;
 
               if (!_iteratorNormalCompletion && _iterator.return != null) {
                 _iterator.return();
               }
 
-            case 41:
-              _context2.prev = 41;
+            case 37:
+              _context2.prev = 37;
 
               if (!_didIteratorError) {
-                _context2.next = 44;
+                _context2.next = 40;
                 break;
               }
 
               throw _iteratorError;
 
-            case 44:
-              return _context2.finish(41);
+            case 40:
+              return _context2.finish(37);
 
-            case 45:
-              return _context2.finish(38);
+            case 41:
+              return _context2.finish(34);
 
-            case 46:
+            case 42:
               Object.keys(shopOrders).forEach(
               /*#__PURE__*/
               function () {
@@ -193,25 +190,25 @@ var _default = {
                   return _ref.apply(this, arguments);
                 };
               }());
-              _context2.next = 49;
+              _context2.next = 45;
               return getCartData.remove();
 
-            case 49:
+            case 45:
               res.send();
-              _context2.next = 55;
+              _context2.next = 51;
               break;
 
-            case 52:
-              _context2.prev = 52;
+            case 48:
+              _context2.prev = 48;
               _context2.t1 = _context2["catch"](0);
               next(_context2.t1);
 
-            case 55:
+            case 51:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[0, 52], [19, 34, 38, 46], [39,, 41, 45]]);
+      }, _callee2, null, [[0, 48], [15, 30, 34, 42], [35,, 37, 41]]);
     }));
 
     function makeOrder(_x, _x2, _x3) {

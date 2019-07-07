@@ -53,25 +53,24 @@ var _default = {
 
             case 9:
               flower = _context.sent;
-              console.log(flowerId);
 
               if (flower) {
-                _context.next = 13;
+                _context.next = 12;
                 break;
               }
 
               return _context.abrupt("return", res.status(404).send('flower not found'));
 
-            case 13:
+            case 12:
               if (!(String(req.user._id) !== String(userId))) {
-                _context.next = 15;
+                _context.next = 14;
                 break;
               }
 
               return _context.abrupt("return", res.status(403).send('you are not allowed to access .'));
 
-            case 15:
-              _context.next = 17;
+            case 14:
+              _context.next = 16;
               return _favflowers.FavModel.findOneAndUpdate({
                 flower: flowerId,
                 user: userId
@@ -80,23 +79,23 @@ var _default = {
                 new: true
               });
 
-            case 17:
+            case 16:
               favFlower = _context.sent;
               res.send(favFlower);
-              _context.next = 24;
+              _context.next = 23;
               break;
 
-            case 21:
-              _context.prev = 21;
+            case 20:
+              _context.prev = 20;
               _context.t0 = _context["catch"](0);
               next(_context.t0);
 
-            case 24:
+            case 23:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 21]]);
+      }, _callee, null, [[0, 20]]);
     }));
 
     function makeFav(_x, _x2, _x3) {

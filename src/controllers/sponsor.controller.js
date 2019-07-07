@@ -15,11 +15,11 @@ export default {
 
             const shop = await ShopModel.findById(shopId);
             if (!shop) return res.status(400).send('shop not found');
-            console.log(shopId);
+            // console.log(shopId);
             
             const flower = await FlowerModel.findById(flowerId);
             if(!flower) return res.status(400).send('flower not found'); 
-            console.log(flowerId);
+            // console.log(flowerId);
 
             if(String(flower.shop) !== String(shopId)) return res.status(403).send('you are not allowed to access this flower');
             

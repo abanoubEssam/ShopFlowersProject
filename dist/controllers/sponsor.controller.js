@@ -61,66 +61,63 @@ var _default = {
               return _context.abrupt("return", res.status(400).send('shop not found'));
 
             case 11:
-              console.log(shopId);
-              _context.next = 14;
+              _context.next = 13;
               return _flower.FlowerModel.findById(flowerId);
 
-            case 14:
+            case 13:
               flower = _context.sent;
 
               if (flower) {
-                _context.next = 17;
+                _context.next = 16;
                 break;
               }
 
               return _context.abrupt("return", res.status(400).send('flower not found'));
 
-            case 17:
-              console.log(flowerId);
-
+            case 16:
               if (!(String(flower.shop) !== String(shopId))) {
-                _context.next = 20;
+                _context.next = 18;
                 break;
               }
 
               return _context.abrupt("return", res.status(403).send('you are not allowed to access this flower'));
 
-            case 20:
+            case 18:
               userJwt = String(req.user._id);
               shopUserId = String(shop.user);
 
               if (!(userJwt !== shopUserId)) {
-                _context.next = 24;
+                _context.next = 22;
                 break;
               }
 
               return _context.abrupt("return", res.status(403).send('you have not the permission to do this operation '));
 
-            case 24:
+            case 22:
               // chech user of  shop of flower is equal to user in jwt  String(req.user._id)
               if (String(flower.shop) == String(shopId)) {
                 flower.sponsored = true;
               }
 
-              _context.next = 27;
+              _context.next = 25;
               return flower.save();
 
-            case 27:
+            case 25:
               res.send(flower);
-              _context.next = 33;
+              _context.next = 31;
               break;
 
-            case 30:
-              _context.prev = 30;
+            case 28:
+              _context.prev = 28;
               _context.t0 = _context["catch"](1);
               next(_context.t0);
 
-            case 33:
+            case 31:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[1, 30]]);
+      }, _callee, null, [[1, 28]]);
     }));
 
     function makeItSponsored(_x, _x2, _x3) {

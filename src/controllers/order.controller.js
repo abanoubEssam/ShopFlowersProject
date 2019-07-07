@@ -10,18 +10,18 @@ export default {
 
     async makeOrder(req, res, next) {
         try {
-            console.log('params : ', req.params)
+            // console.log('params : ', req.params)
             let userId = String(req.params.userId);
-            console.log('params : ', userId)
+            // console.log('params : ', userId)
             if (!mongoose.Types.ObjectId.isValid(userId)) {
-                console.log('please enter a valid  id for user')
+                // console.log('please enter a valid  id for user')
                 return res.status(400).send('please enter a valid  id for user '); // They didn't send an object ID
             }
 
             if (String(req.user._id) !== String(userId)) return res.status(403).send('you are not allowed to access .');
             // const flowers = await CartModel.find({user : userId}).populate('flowers');
             const getCartData = await CartModel.findOne({ user: userId });
-            console.log('getcart data', getCartData)
+            // console.log('getcart data', getCartData)
             if (!getCartData)
                 return res.status(404).send('that cart not found');
 

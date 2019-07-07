@@ -28,7 +28,7 @@ export default {
         }
     },
     async insertFlower(req, res , next) {
-       console.log('insert invoked /............ ')
+    //    console.log('insert invoked /............ ')
         let { shopId } = req.params;
         try {
             if (!mongoose.Types.ObjectId.isValid(req.params.shopId)) {
@@ -66,7 +66,7 @@ export default {
         }
     },
     async findFlowersByShopId(req , res , next){
-      console.log('findFlowersByShopId invoked .............../ ')
+    //   console.log('findFlowersByShopId invoked .............../ ')
         let { shopId } = req.params;
         try {
             if (!mongoose.Types.ObjectId.isValid(req.params.shopId)) {

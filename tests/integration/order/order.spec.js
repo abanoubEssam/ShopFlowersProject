@@ -76,12 +76,12 @@ export const orderTest = () => {
                 await orderModel.remove()
 
                 Path = '/api/users/' + userId + '/orders'
-                console.log('path////******\\\\\\ ' , Path)
+                // console.log('path////******\\\\\\ ' , Path)
                 res = await request(server)
                 .post(Path)
                 .set('Authorization', 'Bearer ' + token)
 
-                console.log('ERROR:', res.error);
+                // console.log('ERROR:', res.error);
                 expect(res.status).toBe(200)
 
             })

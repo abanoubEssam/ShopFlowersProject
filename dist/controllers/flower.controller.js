@@ -106,49 +106,49 @@ var _default = {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              console.log('insert invoked /............ ');
+              //    console.log('insert invoked /............ ')
               shopId = req.params.shopId;
-              _context3.prev = 2;
+              _context3.prev = 1;
 
               if (mongoose.Types.ObjectId.isValid(req.params.shopId)) {
-                _context3.next = 5;
+                _context3.next = 4;
                 break;
               }
 
               return _context3.abrupt("return", res.status(400).send('to  insert flower please enter a valid  id '));
 
-            case 5:
-              _context3.next = 7;
+            case 4:
+              _context3.next = 6;
               return _shop.ShopModel.findById(shopId);
 
-            case 7:
+            case 6:
               shop = _context3.sent;
 
               if (shop) {
-                _context3.next = 10;
+                _context3.next = 9;
                 break;
               }
 
               return _context3.abrupt("return", res.status(400).send('shop not found'));
 
-            case 10:
+            case 9:
               userJwt = String(req.user._id);
               shopUserId = String(shop.user);
 
               if (!(userJwt !== shopUserId)) {
-                _context3.next = 14;
+                _context3.next = 13;
                 break;
               }
 
               return _context3.abrupt("return", res.status(403).send('you have not the permission to do this operation '));
 
-            case 14:
+            case 13:
               if (!req.file) {
                 res.status(400).send('file is required !');
               }
 
               (0, _validator.validate)(req.body, _flower2.insertFlowerSchema);
-              _context3.next = 18;
+              _context3.next = 17;
               return _flower2.FlowerModel.create({
                 name: req.body.name,
                 description: req.body.description,
@@ -157,7 +157,7 @@ var _default = {
                 shop: shopId
               });
 
-            case 18:
+            case 17:
               flower = _context3.sent;
               res.status(201).send(flower);
 
@@ -165,24 +165,24 @@ var _default = {
                 shop.totalFlowersCount += 1;
               }
 
-              _context3.next = 23;
+              _context3.next = 22;
               return shop.save();
 
-            case 23:
-              _context3.next = 28;
+            case 22:
+              _context3.next = 27;
               break;
 
-            case 25:
-              _context3.prev = 25;
-              _context3.t0 = _context3["catch"](2);
+            case 24:
+              _context3.prev = 24;
+              _context3.t0 = _context3["catch"](1);
               next(_context3.t0);
 
-            case 28:
+            case 27:
             case "end":
               return _context3.stop();
           }
         }
-      }, _callee3, null, [[2, 25]]);
+      }, _callee3, null, [[1, 24]]);
     }));
 
     function insertFlower(_x7, _x8, _x9) {
@@ -200,54 +200,54 @@ var _default = {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
-              console.log('findFlowersByShopId invoked .............../ ');
+              //   console.log('findFlowersByShopId invoked .............../ ')
               shopId = req.params.shopId;
-              _context4.prev = 2;
+              _context4.prev = 1;
 
               if (mongoose.Types.ObjectId.isValid(req.params.shopId)) {
-                _context4.next = 5;
+                _context4.next = 4;
                 break;
               }
 
               return _context4.abrupt("return", res.status(400).send('to get flowers by shop id please enter a valid  id '));
 
-            case 5:
-              _context4.next = 7;
+            case 4:
+              _context4.next = 6;
               return _shop.ShopModel.findById(shopId);
 
-            case 7:
+            case 6:
               shop = _context4.sent;
 
               if (shop) {
-                _context4.next = 10;
+                _context4.next = 9;
                 break;
               }
 
               return _context4.abrupt("return", res.status(400).send('shop not found'));
 
-            case 10:
-              _context4.next = 12;
+            case 9:
+              _context4.next = 11;
               return _flower2.FlowerModel.find({
                 shop: shopId
               });
 
-            case 12:
+            case 11:
               flowers = _context4.sent;
               res.status(200).send(flowers);
-              _context4.next = 19;
+              _context4.next = 18;
               break;
 
-            case 16:
-              _context4.prev = 16;
-              _context4.t0 = _context4["catch"](2);
+            case 15:
+              _context4.prev = 15;
+              _context4.t0 = _context4["catch"](1);
               next(_context4.t0);
 
-            case 19:
+            case 18:
             case "end":
               return _context4.stop();
           }
         }
-      }, _callee4, null, [[2, 16]]);
+      }, _callee4, null, [[1, 15]]);
     }));
 
     function findFlowersByShopId(_x10, _x11, _x12) {

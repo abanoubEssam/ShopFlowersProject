@@ -28,13 +28,9 @@ export const cartTest = () => {
             }
 
             it('should post flowers at cart and return 201', async () => {
-
-
                 await ShopModel.remove()
-
                 const user = await UserModel.findOne({});
                 const token = user.generateAuthToken();
-
                 const userId = user._id;
                 let res = await request(server)
                     .post('/api/shops')
@@ -46,9 +42,7 @@ export const cartTest = () => {
 
                 const shop = await ShopModel.findOne({})
                 const shopId = shop._id;
-
                 await FlowerModel.remove()
-
                 let Path = '/api/shops/' + shop._id + '/flowers'
 
                 res = await request(server)

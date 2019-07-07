@@ -19,7 +19,7 @@ export default {
             }
 
             const flower = await FlowerModel.findById(flowerId);
-            console.log(flowerId);
+            // console.log(flowerId);
             if (!flower) return res.status(404).send('flower not found');
 
             if (String(req.user._id) !== String(userId)) return res.status(403).send('you are not allowed to access .');
