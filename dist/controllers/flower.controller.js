@@ -31,16 +31,18 @@ var _default = {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
+              console.log(' el findAllFlowers func work ====== '); // const flowers = await FlowerModel.find().populate('shop');
+
+              _context.next = 3;
               return _flower2.FlowerModel.find().sort({
                 sponsored: -1
               });
 
-            case 2:
+            case 3:
               flowers = _context.sent;
               res.send(flowers);
 
-            case 4:
+            case 5:
             case "end":
               return _context.stop();
           }
@@ -58,15 +60,15 @@ var _default = {
     var _findFlowers = (0, _asyncToGenerator2.default)(
     /*#__PURE__*/
     _regenerator.default.mark(function _callee2(req, res, next) {
-      var pageNumber, pageSize, flowers;
+      var pageNumber, pageSize, flowers, countFlowers, pageCount;
       return _regenerator.default.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.prev = 0;
               console.log(' el findFlowers func work ====== ');
-              pageNumber = req.query.pageNumber;
-              pageSize = req.query.pageSize;
+              pageNumber = Number(req.query.pageNumber) || 1;
+              pageSize = Number(req.query.pageSize) || 5;
               _context2.next = 6;
               return _flower2.FlowerModel.find().sort({
                 sponsored: -1
@@ -74,21 +76,44 @@ var _default = {
 
             case 6:
               flowers = _context2.sent;
-              res.send(flowers);
-              _context2.next = 13;
+              _context2.next = 9;
+              return _flower2.FlowerModel.count();
+
+            case 9:
+              countFlowers = _context2.sent;
+              pageCount = Math.ceil(countFlowers / pageSize); // const skiped = (pageNumber - 1 ) * pageSize;
+              // console.log("pageNumber : " , pageNumber , "pageSize : " , pageSize)
+              // console.log('skiped' , skiped)
+              // if (skiped == 0 ) {
+              //    let remainigCount = countFlowers - pageSize;
+              //     console.log("skiped =0 , remaining count : " , remainigCount)
+              // }
+              // else{
+              //     let remainigCount = countFlowers - skiped;
+              //     console.log("remaining count : " , remainigCount)
+              // }
+
+              res.send({
+                data: flowers,
+                pageNumber: pageNumber,
+                pageSize: pageSize,
+                totalCount: countFlowers,
+                pageCount: pageCount
+              });
+              _context2.next = 17;
               break;
 
-            case 10:
-              _context2.prev = 10;
+            case 14:
+              _context2.prev = 14;
               _context2.t0 = _context2["catch"](0);
               next(_context2.t0);
 
-            case 13:
+            case 17:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[0, 10]]);
+      }, _callee2, null, [[0, 14]]);
     }));
 
     function findFlowers(_x4, _x5, _x6) {

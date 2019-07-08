@@ -58,7 +58,7 @@ export const validateUserOnUpdateSchema = {
     name: {
       type: 'string',
       require: true,
-      minlength: 4
+      minLength: 4
     },
     email: {
       type: 'string',
@@ -69,8 +69,7 @@ export const validateUserOnUpdateSchema = {
     password: {
       type: 'string',
       require: true,
-      minlength: 6,
-      maxlength: 15
+      minLength: 6
     }
   }
 }
@@ -81,7 +80,7 @@ export const SignUpSchema = {
     name: {
       type: 'string',
       require: true,
-      minlength: 4
+      minLength: 4
     },
     email: {
       type: 'string',
@@ -92,8 +91,7 @@ export const SignUpSchema = {
     password: {
       type: 'string',
       require: true,
-      minlength: 6,
-      maxlength: 15
+      minLength: 6
 
 
     }

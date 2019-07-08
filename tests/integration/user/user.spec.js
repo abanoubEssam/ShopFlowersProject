@@ -1,4 +1,3 @@
-// const request = require('supertest');
 import request from 'supertest'
 const { UserModel } = require('../../../src/models/user.models')
 const { ShopModel } = require('../../../src/models/shop.models')

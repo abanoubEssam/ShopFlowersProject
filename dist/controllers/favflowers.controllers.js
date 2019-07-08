@@ -18,6 +18,7 @@ var _flower = require("../models/flower.models");
 var mongoose = require('mongoose'); // const Loc = mongoose.model('Location');
 
 
+mongoose.debug = true;
 var _default = {
   makeFav: function () {
     var _makeFav = (0, _asyncToGenerator2.default)(
@@ -72,8 +73,8 @@ var _default = {
             case 14:
               _context.next = 16;
               return _favflowers.FavModel.findOneAndUpdate({
-                flower: flowerId,
-                user: userId
+                user: userId,
+                flower: flowerId
               }, {}, {
                 upsert: true,
                 new: true
@@ -81,21 +82,22 @@ var _default = {
 
             case 16:
               favFlower = _context.sent;
+              console.log(favFlower);
               res.send(favFlower);
-              _context.next = 23;
+              _context.next = 24;
               break;
 
-            case 20:
-              _context.prev = 20;
+            case 21:
+              _context.prev = 21;
               _context.t0 = _context["catch"](0);
               next(_context.t0);
 
-            case 23:
+            case 24:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 20]]);
+      }, _callee, null, [[0, 21]]);
     }));
 
     function makeFav(_x, _x2, _x3) {
@@ -108,53 +110,113 @@ var _default = {
     var _getFav = (0, _asyncToGenerator2.default)(
     /*#__PURE__*/
     _regenerator.default.mark(function _callee2(req, res, next) {
-      var userId, favFlowers;
+      var userId, pageNumber, pageSize, pipeline, resultPipeline, countPipeline, FavFlowers, count;
       return _regenerator.default.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
               userId = String(req.params.userId);
-              _context2.prev = 1;
+              pageNumber = Number(req.query.pageNumber) || 1;
+              pageSize = Number(req.query.pageSize) || 5;
+              _context2.prev = 3;
 
               if (mongoose.Types.ObjectId.isValid(req.params.userId)) {
-                _context2.next = 4;
+                _context2.next = 6;
                 break;
               }
 
               return _context2.abrupt("return", res.status(400).send('please enter a valid  id '));
 
-            case 4:
+            case 6:
               if (!(String(req.user._id) !== String(userId))) {
-                _context2.next = 6;
+                _context2.next = 8;
                 break;
               }
 
               return _context2.abrupt("return", res.status(403).send('you are not allowed to access .'));
 
-            case 6:
-              _context2.next = 8;
-              return _favflowers.FavModel.find({
-                user: userId
-              }).populate('flower');
-
             case 8:
-              favFlowers = _context2.sent;
-              // if (!flowers) return res.status(400).send('there is no flowers');
-              res.send(favFlowers);
-              _context2.next = 15;
+              // const favFlowers = await FavModel.find({ user: userId }).populate('flower')
+              // const fflower = await FavModel.find({user: userId})
+              // console.log(fflower)
+              pipeline = [{
+                $match: {
+                  "user": mongoose.Types.ObjectId(userId)
+                }
+              }, {
+                $lookup: {
+                  from: 'flowers',
+                  localField: 'flower',
+                  foreignField: '_id',
+                  as: 'flowers'
+                }
+              }, {
+                $unwind: '$flowers'
+              }, {
+                $replaceRoot: {
+                  newRoot: '$flowers'
+                }
+              }];
+              resultPipeline = pipeline.concat([{
+                $sort: {
+                  sponsored: -1
+                }
+              }, {
+                $skip: (pageNumber - 1) * pageSize
+              }, {
+                $limit: pageSize
+              }]);
+              countPipeline = pipeline.concat([{
+                $group: {
+                  _id: null,
+                  count: {
+                    $sum: 1
+                  }
+                }
+              }]);
+              _context2.next = 13;
+              return _favflowers.FavModel.aggregate(resultPipeline);
+
+            case 13:
+              FavFlowers = _context2.sent;
+              _context2.next = 16;
+              return _favflowers.FavModel.aggregate(countPipeline);
+
+            case 16:
+              _context2.t0 = _context2.sent[0];
+
+              if (_context2.t0) {
+                _context2.next = 19;
+                break;
+              }
+
+              _context2.t0 = {
+                count: 0
+              };
+
+            case 19:
+              count = _context2.t0;
+              console.log('aggegateFavFlowers', FavFlowers); // if (!flowers) return res.status(400).send('there is no flowers');
+
+              res.send({
+                FavFlowers: FavFlowers,
+                count: count
+              }); // res.send(aggegateFavFlowers , count);
+
+              _context2.next = 27;
               break;
 
-            case 12:
-              _context2.prev = 12;
-              _context2.t0 = _context2["catch"](1);
-              next(_context2.t0);
+            case 24:
+              _context2.prev = 24;
+              _context2.t1 = _context2["catch"](3);
+              next(_context2.t1);
 
-            case 15:
+            case 27:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[1, 12]]);
+      }, _callee2, null, [[3, 24]]);
     }));
 
     function getFav(_x4, _x5, _x6) {

@@ -1,9 +1,9 @@
 const swaggerUI = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
 import { validateOnUpdateSchema, CreateShopSchema } from '../models/shop.models';
-import { validateUserOnUpdateSchema , SignUpSchema } from '../models/user.models';
+import { validateUserOnUpdateSchema, SignUpSchema } from '../models/user.models';
 
-import {insertFlowerSchema, validateOnUpdateFlowerSchema } from '../models/flower.models';
+import { insertFlowerSchema, validateOnUpdateFlowerSchema } from '../models/flower.models';
 
 
 import clone from 'clone';
@@ -25,22 +25,22 @@ validateOnUpdateSwaggerSchema.properties = {
 const validateUserOnUpdateSwaggerSchema = clone(validateUserOnUpdateSchema);
 validateUserOnUpdateSwaggerSchema.properties = {
     ...validateUserOnUpdateSwaggerSchema.properties,
-      userImage: {
-          description: 'file to upload',
-          type: 'string',
-          format: 'binary'
-      }
+    userImage: {
+        description: 'file to upload',
+        type: 'string',
+        format: 'binary'
+    }
 }
 
 // get a copy of object and update it then use it
 // create user schema
 const SignUpSwaggerSchema = clone(SignUpSchema);
 SignUpSwaggerSchema.properties = {
-    ...SignUpSwaggerSchema.properties ,
+    ...SignUpSwaggerSchema.properties,
     userImage: {
-      description: 'file to upload',
-      type: 'string',
-      format: 'binary'
+        description: 'file to upload',
+        type: 'string',
+        format: 'binary'
     }
 }
 
@@ -50,20 +50,20 @@ const CreateShopSwaggerSchema = clone(CreateShopSchema);
 // to add more required fields in this schema 
 // CreateShopSwaggerSchema.required.push(['']);
 CreateShopSwaggerSchema.properties = {
-    ...CreateShopSwaggerSchema.properties ,
-    
-      shopImage: {
-          description: 'file to upload',
-          type: 'string',
-          format: 'binary'
-      }
+    ...CreateShopSwaggerSchema.properties,
+
+    shopImage: {
+        description: 'file to upload',
+        type: 'string',
+        format: 'binary'
+    }
 }
 
 const CreateFlowerSwaggerSchema = clone(insertFlowerSchema);
-CreateFlowerSwaggerSchema.required.push('flowerImage' , 'price');
+CreateFlowerSwaggerSchema.required.push('flowerImage', 'price');
 CreateFlowerSwaggerSchema.properties = {
-    ...CreateFlowerSwaggerSchema.properties ,
-    flowerImage:{
+    ...CreateFlowerSwaggerSchema.properties,
+    flowerImage: {
         description: 'file to upload',
         type: 'string',
         format: 'binary'
@@ -73,8 +73,8 @@ CreateFlowerSwaggerSchema.properties = {
 const validateUpdateFlowerSwaggerSchema = clone(validateOnUpdateFlowerSchema);
 
 validateUpdateFlowerSwaggerSchema.properties = {
-    ...validateUpdateFlowerSwaggerSchema.properties ,
-    flowerImage:{
+    ...validateUpdateFlowerSwaggerSchema.properties,
+    flowerImage: {
         description: 'file to upload',
         type: 'string',
         format: 'binary'
@@ -344,7 +344,7 @@ const options = {
                     },
                 }
             },
-            '/users/{userId}/favourites':{
+            '/users/{userId}/favourites/?pageNumber={pageNumber}&pageSize={pageSize}': {
                 get: {
                     tags: ['users favourites'],
                     summary: ['Get User by id and his/her All favourite'],
@@ -359,6 +359,22 @@ const options = {
                             schema: {
                                 type: "string"
                             }
+                        },
+                        {
+                            name: "pageNumber",
+                            in: "path",
+                            description: "Number of Page to return shops",
+                            schema: {
+                                type: "number"
+                            }
+                        },
+                        {
+                            name: "pageSize",
+                            in: "path",
+                            description: "Number of shops to return shops",
+                            schema: {
+                                type: "number"
+                            }
                         }
                     ],
                     'responses': {
@@ -372,7 +388,7 @@ const options = {
                     },
                 },
             },
-            '/users/{userId}/cart':{
+            '/users/{userId}/cart': {
                 get: {
                     tags: ['users carts'],
                     summary: ['Get User by id and his/her carts'],
@@ -400,7 +416,7 @@ const options = {
                     },
                 },
             },
-            '/users/{userId}/cart/{flowerId}':{
+            '/users/{userId}/cart/{flowerId}': {
                 post: {
                     tags: ['users carts'],
                     summary: ['Post User by id and his/her carts'],
@@ -436,8 +452,8 @@ const options = {
                         }
                     },
                 },
-                delete:{
-                    
+                delete: {
+
                     tags: ['users carts'],
                     summary: ['delete flower of User by id of flower and his/her id'],
                     description: 'This can only be done by the logged in user.',
@@ -473,11 +489,11 @@ const options = {
                     }
                 }
             },
-            '/users/{userId}/orders':{
-                get:{
+            '/users/{userId}/orders': {
+                get: {
                     tags: ['orders'],
-                    summary:['Get Orders of user'],
-                    description:'this can only be done by the logged in user',
+                    summary: ['Get Orders of user'],
+                    description: 'this can only be done by the logged in user',
                     operationId: 'get Order',
                     parameters: [
                         {
@@ -499,10 +515,10 @@ const options = {
                         }
                     },
                 },
-                post:{
+                post: {
                     tags: ['orders'],
-                    summary:['Post Orders of user'],
-                    description:'this can only be done by the logged in user',
+                    summary: ['Post Orders of user'],
+                    description: 'this can only be done by the logged in user',
                     operationId: 'Post Order',
                     parameters: [
                         {
@@ -525,11 +541,11 @@ const options = {
                     },
                 }
             },
-            '/users/{userId}/orders/{orderId}':{
-                delete:{
+            '/users/{userId}/orders/{orderId}': {
+                delete: {
                     tags: ['orders'],
-                    summary:['delete an Order of user using id'],
-                    description:'this can only be done by the logged in user',
+                    summary: ['delete an Order of user using id'],
+                    description: 'this can only be done by the logged in user',
                     operationId: 'delete Order',
                     parameters: [
                         {
@@ -561,12 +577,12 @@ const options = {
                     },
                 }
             },
-            '/notification':{
-                get:{
+            '/notification': {
+                get: {
                     tags: ['notification'],
                     summary: ['get notification'],
                     description: 'This can only be done by the logged in user.',
-                    operationId: 'get notification' ,
+                    operationId: 'get notification',
                     'responses': {
                         '200': {
                             'description': 'user created successfully',
@@ -577,21 +593,21 @@ const options = {
                     }
                 }
             },
-            '/push-notifications/unsubscribe?token={token}':{
-                delete:{
+            '/push-notifications/unsubscribe?token={token}': {
+                delete: {
                     tags: ['Push-Notification'],
                     summary: ['delete token from user'],
                     description: 'This can only be done by the logged in user.',
-                    operationId: 'delete notification' ,
+                    operationId: 'delete notification',
                     parameters: [
                         {
-                          name: "token",
-                          in: "path",
-                          description: " delete token ",
-                          required: true,
-                          schema: {
-                            type: "string"
-                          }
+                            name: "token",
+                            in: "path",
+                            description: " delete token ",
+                            required: true,
+                            schema: {
+                                type: "string"
+                            }
                         }],
                     'responses': {
                         '200': {
@@ -603,21 +619,21 @@ const options = {
                     }
                 }
             },
-            '/push-notifications/unsubscribe/{token}':{
-                post:{
+            '/push-notifications/unsubscribe/{token}': {
+                post: {
                     tags: ['Push-Notification'],
                     summary: ['post token from user'],
                     description: 'This can only be done by the logged in user.',
-                    operationId: 'post notification' ,
+                    operationId: 'post notification',
                     parameters: [
                         {
-                          name: "token",
-                          in: "path",
-                          description: " post token ",
-                          required: true,
-                          schema: {
-                            type: "string"
-                          }
+                            name: "token",
+                            in: "path",
+                            description: " post token ",
+                            required: true,
+                            schema: {
+                                type: "string"
+                            }
                         }],
                     'responses': {
                         '200': {
@@ -652,9 +668,9 @@ const options = {
                         }
                     },
                 }
-               
+
             },
-            '/shops/?pageNumber={pageNumber}&pageSize={pageSize}':{
+            '/shops/?pageNumber={pageNumber}&pageSize={pageSize}': {
                 get: {
                     tags: ['shops'],
                     summary: ['Get All Shops with pagination'],
@@ -662,22 +678,22 @@ const options = {
                     operationId: 'get shop',
                     parameters: [
                         {
-                          name: "pageNumber",
-                          in: "path",
-                          description: "Number of Page to return shops",             
-                          schema: {
-                            type: "number"
-                          }
+                            name: "pageNumber",
+                            in: "path",
+                            description: "Number of Page to return shops",
+                            schema: {
+                                type: "number"
+                            }
                         },
                         {
                             name: "pageSize",
                             in: "path",
-                            description: "Number of shops to return shops",                         
+                            description: "Number of shops to return shops",
                             schema: {
-                              type: "number"
+                                type: "number"
                             }
-                          }
-                      ],
+                        }
+                    ],
                     'responses': {
                         '200': {
                             'description': 'user logged in successfully',
@@ -696,13 +712,13 @@ const options = {
                     operationId: 'get shops near me',
                     parameters: [
                         {
-                          name: "lng",
-                          in: "path",
-                          description: "Lng to return shop",
-                          required: true,
-                          schema: {
-                            type: "number"
-                          }
+                            name: "lng",
+                            in: "path",
+                            description: "Lng to return shop",
+                            required: true,
+                            schema: {
+                                type: "number"
+                            }
                         }
                         ,
                         {
@@ -711,20 +727,20 @@ const options = {
                             description: "Lat to return shop",
                             required: true,
                             schema: {
-                              type: "number"
+                                type: "number"
                             }
-                          },
-                          {
+                        },
+                        {
                             name: "radius",
                             in: "path",
-                            
-                            description: "radius to return shops on radius", 
+
+                            description: "radius to return shops on radius",
                             schema: {
-                              type: "number",
-                              default: 10
+                                type: "number",
+                                default: 10
                             }
-                          }
-                      ],
+                        }
+                    ],
                     'responses': {
                         '200': {
                             'description': 'user logged in successfully',
@@ -820,13 +836,30 @@ const options = {
                     },
                 }
             },
-            '/flowers':{
-                get:{
+            '/flowers/?pageNumber={pageNumber}&pageSize={pageSize}': {
+                get: {
                     tags: ['Flowers'],
                     summary: ['Get All Flowers'],
                     description: 'This can only be done by the logged in user with shop id.',
                     operationId: 'Get All Flowers',
-
+                    parameters: [
+                        {
+                            name: "pageNumber",
+                            in: "path",
+                            description: "Number of Page to return shops",
+                            schema: {
+                                type: "number"
+                            }
+                        },
+                        {
+                            name: "pageSize",
+                            in: "path",
+                            description: "Number of shops to return shops",
+                            schema: {
+                                type: "number"
+                            }
+                        }
+                    ],
                     'responses': {
                         '200': {
                             'description': 'flowers finde successfuly',
@@ -837,7 +870,7 @@ const options = {
                     },
                 }
             },
-            '/shops/{shopId}/flowers':{
+            '/shops/{shopId}/flowers': {
                 post: {
                     tags: ['Flowers'],
                     summary: ['Create Flowers'],
@@ -1034,7 +1067,7 @@ const options = {
                             }
                         }
                     ],
-                   
+
                     'responses': {
                         '200': {
                             'description': 'Flower Sponsord successfully',

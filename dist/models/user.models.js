@@ -65,7 +65,7 @@ var validateUserOnUpdateSchema = {
     name: {
       type: 'string',
       require: true,
-      minlength: 4
+      minLength: 4
     },
     email: {
       type: 'string',
@@ -75,8 +75,7 @@ var validateUserOnUpdateSchema = {
     password: {
       type: 'string',
       require: true,
-      minlength: 6,
-      maxlength: 15
+      minLength: 6
     }
   }
 };
@@ -87,7 +86,7 @@ var SignUpSchema = {
     name: {
       type: 'string',
       require: true,
-      minlength: 4
+      minLength: 4
     },
     email: {
       type: 'string',
@@ -97,8 +96,7 @@ var SignUpSchema = {
     password: {
       type: 'string',
       require: true,
-      minlength: 6,
-      maxlength: 15
+      minLength: 6
     }
   }
 };

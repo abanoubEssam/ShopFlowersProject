@@ -6,9 +6,9 @@ const express = require('express');
 const router = express.Router();
 
 // flowers
-router.get('/', flowersController.findAllFowers);
+router.get('/', flowersController.findFlowers);
 
 // this route will be shops/flowers?pageNumber=AnyNum&pageSize=AnyNum
-router.get('/flowers', flowersController.findFlowers);
+// router.get('/flowers', flowersController.findFlowers);
 
 module.exports = router;

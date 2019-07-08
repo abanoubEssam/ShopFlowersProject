@@ -310,7 +310,7 @@ var options = {
           }
         }
       },
-      '/users/{userId}/favourites': {
+      '/users/{userId}/favourites/?pageNumber={pageNumber}&pageSize={pageSize}': {
         get: {
           tags: ['users favourites'],
           summary: ['Get User by id and his/her All favourite'],
@@ -323,6 +323,20 @@ var options = {
             required: true,
             schema: {
               type: "string"
+            }
+          }, {
+            name: "pageNumber",
+            in: "path",
+            description: "Number of Page to return shops",
+            schema: {
+              type: "number"
+            }
+          }, {
+            name: "pageSize",
+            in: "path",
+            description: "Number of shops to return shops",
+            schema: {
+              type: "number"
             }
           }],
           'responses': {
@@ -744,12 +758,27 @@ var options = {
           }
         }
       },
-      '/flowers': {
+      '/flowers/?pageNumber={pageNumber}&pageSize={pageSize}': {
         get: {
           tags: ['Flowers'],
           summary: ['Get All Flowers'],
           description: 'This can only be done by the logged in user with shop id.',
           operationId: 'Get All Flowers',
+          parameters: [{
+            name: "pageNumber",
+            in: "path",
+            description: "Number of Page to return shops",
+            schema: {
+              type: "number"
+            }
+          }, {
+            name: "pageSize",
+            in: "path",
+            description: "Number of shops to return shops",
+            schema: {
+              type: "number"
+            }
+          }],
           'responses': {
             '200': {
               'description': 'flowers finde successfuly'

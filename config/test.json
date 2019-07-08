@@ -1,5 +1,5 @@
 {
     "jwtPrivateKey": "1234",
-    "db":"mongodb://localhost/ShopsFlowersTestsdevcenterdevcenter"
+    "db":"mongodb://localhost/ShopsFlowersTests"
 
 }
