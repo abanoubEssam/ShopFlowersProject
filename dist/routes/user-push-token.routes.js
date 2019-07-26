@@ -9,6 +9,6 @@ var _passport = require("../services/passport.service");
 var express = require('express');
 
 var router = express.Router();
-router.post('/subscribe', _passport.JWTAuth, _userPushToken.default.subscribe);
-router.delete('/unsubscribe', _passport.JWTAuth, _userPushToken.default.unSubscribe);
+router.post('/subscribe', _passport.JWTAuth, _userPushToken["default"].subscribe);
+router["delete"]('/unsubscribe', _passport.JWTAuth, _userPushToken["default"].unSubscribe);
 module.exports = router;

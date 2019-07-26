@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
@@ -28,12 +28,12 @@ var mongoose = require('mongoose');
 // import dsClient from '../services/deepstreem.client.service'
 var _default = {
   makeOrder: function () {
-    var _makeOrder = (0, _asyncToGenerator2.default)(
+    var _makeOrder = (0, _asyncToGenerator2["default"])(
     /*#__PURE__*/
-    _regenerator.default.mark(function _callee2(req, res, next) {
+    _regenerator["default"].mark(function _callee2(req, res, next) {
       var userId, getCartData, shopOrders, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, flowerIdInCart, flower;
 
-      return _regenerator.default.wrap(function _callee2$(_context2) {
+      return _regenerator["default"].wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
@@ -119,8 +119,8 @@ var _default = {
               _context2.prev = 34;
               _context2.prev = 35;
 
-              if (!_iteratorNormalCompletion && _iterator.return != null) {
-                _iterator.return();
+              if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+                _iterator["return"]();
               }
 
             case 37:
@@ -143,11 +143,11 @@ var _default = {
               Object.keys(shopOrders).forEach(
               /*#__PURE__*/
               function () {
-                var _ref = (0, _asyncToGenerator2.default)(
+                var _ref = (0, _asyncToGenerator2["default"])(
                 /*#__PURE__*/
-                _regenerator.default.mark(function _callee(shopId) {
+                _regenerator["default"].mark(function _callee(shopId) {
                   var shop, userName, shopOwner;
-                  return _regenerator.default.wrap(function _callee$(_context) {
+                  return _regenerator["default"].wrap(function _callee$(_context) {
                     while (1) {
                       switch (_context.prev = _context.next) {
                         case 0:
@@ -218,11 +218,11 @@ var _default = {
     return makeOrder;
   }(),
   getOrder: function () {
-    var _getOrder = (0, _asyncToGenerator2.default)(
+    var _getOrder = (0, _asyncToGenerator2["default"])(
     /*#__PURE__*/
-    _regenerator.default.mark(function _callee3(req, res, next) {
+    _regenerator["default"].mark(function _callee3(req, res, next) {
       var userId, flowers;
-      return _regenerator.default.wrap(function _callee3$(_context3) {
+      return _regenerator["default"].wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
@@ -269,11 +269,11 @@ var _default = {
     return getOrder;
   }(),
   deleteOrder: function () {
-    var _deleteOrder = (0, _asyncToGenerator2.default)(
+    var _deleteOrder = (0, _asyncToGenerator2["default"])(
     /*#__PURE__*/
-    _regenerator.default.mark(function _callee4(req, res, next) {
+    _regenerator["default"].mark(function _callee4(req, res, next) {
       var userId, orderId, getOrderId, getOrderIdAndDelete;
-      return _regenerator.default.wrap(function _callee4$(_context4) {
+      return _regenerator["default"].wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
@@ -348,4 +348,4 @@ var _default = {
     return deleteOrder;
   }()
 };
-exports.default = _default;
+exports["default"] = _default;

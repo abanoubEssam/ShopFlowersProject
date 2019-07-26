@@ -33,11 +33,11 @@ passport.use(new LocalStrategy({
 },
 /*#__PURE__*/
 function () {
-  var _ref = (0, _asyncToGenerator2.default)(
+  var _ref = (0, _asyncToGenerator2["default"])(
   /*#__PURE__*/
-  _regenerator.default.mark(function _callee(username, password, done) {
+  _regenerator["default"].mark(function _callee(username, password, done) {
     var user, validPassword;
-    return _regenerator.default.wrap(function _callee$(_context) {
+    return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
@@ -60,7 +60,7 @@ function () {
 
           case 5:
             _context.next = 7;
-            return _bcrypt.default.compare(password, user.password);
+            return _bcrypt["default"].compare(password, user.password);
 
           case 7:
             validPassword = _context.sent;
@@ -89,15 +89,15 @@ function () {
 }()));
 var opts = {};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = _config.default.get('jwtPrivateKey');
+opts.secretOrKey = _config["default"].get('jwtPrivateKey');
 passport.use(new JwtStrategy(opts,
 /*#__PURE__*/
 function () {
-  var _ref2 = (0, _asyncToGenerator2.default)(
+  var _ref2 = (0, _asyncToGenerator2["default"])(
   /*#__PURE__*/
-  _regenerator.default.mark(function _callee2(jwt_payload, done) {
+  _regenerator["default"].mark(function _callee2(jwt_payload, done) {
     var user;
-    return _regenerator.default.wrap(function _callee2$(_context2) {
+    return _regenerator["default"].wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:

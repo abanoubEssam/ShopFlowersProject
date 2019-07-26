@@ -32,10 +32,10 @@ function sendNotifi(_x, _x2) {
 }
 
 function _sendNotifi() {
-  _sendNotifi = (0, _asyncToGenerator2.default)(
+  _sendNotifi = (0, _asyncToGenerator2["default"])(
   /*#__PURE__*/
-  _regenerator.default.mark(function _callee(user, text) {
-    return _regenerator.default.wrap(function _callee$(_context) {
+  _regenerator["default"].mark(function _callee(user, text) {
+    return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
@@ -63,11 +63,11 @@ function sendPushNotifi(_x3, _x4) {
 }
 
 function _sendPushNotifi() {
-  _sendPushNotifi = (0, _asyncToGenerator2.default)(
+  _sendPushNotifi = (0, _asyncToGenerator2["default"])(
   /*#__PURE__*/
-  _regenerator.default.mark(function _callee2(user, text) {
+  _regenerator["default"].mark(function _callee2(user, text) {
     var documentToken, message;
-    return _regenerator.default.wrap(function _callee2$(_context2) {
+    return _regenerator["default"].wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
