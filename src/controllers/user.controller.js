@@ -27,13 +27,9 @@ function chechPasswordLength(currentPassword){
 }
 
 export default {
-
     async findAll(req, res, next) {
-        const user = await UserModel.find()
-            .select('name imageURL email');
-
+        const user = await UserModel.find({})
         res.send(user);
-
     },
 
     async createUser(req, res , next) {

@@ -1,6 +1,6 @@
 {
     "protocol":"http",
     "jwtPrivateKey": "my secret",
-    "db":"mongodb+srv://abanoubessam:01280680253Aa!@shop-5bavh.mongodb.net/shop-flower?retryWrites=true&w=majority",
+    "db":"mongodb+srv://abanoubessam:01280680253Aa!@shop-5bavh.mongodb.net/shop-flowers?retryWrites=true&w=majority",
     "host":"localhost:3000"
 }

@@ -1,9 +1,12 @@
+import morgan from 'morgan';
 import  path from 'path';
 import passport from 'passport';
 const swaggerDocs = require('./services/swaggerDocs.service');
 const mongoose = require('mongoose');
 
 import  config  from 'config'
+
+
 
 const shops = require('./routes/shop.routes');
 const User = require('./routes/user.routes');
@@ -15,6 +18,8 @@ const pushNotification = require('./routes/user-push-token.routes');
 const Notification = require('./routes/notification.routes');
 const express = require('express');
 const app = express();
+
+
 
 swaggerDocs(app);
 
@@ -30,6 +35,7 @@ require('./services/prod')(app)
 app.use(express.json());
 app.use(passport.initialize());
 
+app.use(morgan('dev'))
 
 app.use('/uploads', express.static(path.join(__dirname, '..' , 'uploads')));
 app.use('/api/shops', shops);
